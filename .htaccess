@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteRule ^login ./view/auth/login.php
+RewriteRule ^pasien/list ./view/pasien/index.php
+RewriteRule ^pasien/add ./view/pasien/add.php
+RewriteRule ^dashboard ./view/dashboard/index.php
+RewriteRule ^403 error/error?403
+RewriteRule ^404 error/error.php?404
+RewriteRule ^500 error/error.php?500
+# ErrorDocument 404 https://localhost/repository-prodi/404
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+</IfModule>
