@@ -9,6 +9,7 @@ if (isset($_SESSION['login']) == 'true') {
     $queryPasien = mysqli_query($con, "SELECT id_pasien FROM pasiens;");
     $pasien = mysqli_num_rows($queryPasien);
 ?>
+
     <div class="row">
         <div class="col">
             <div class="card">
