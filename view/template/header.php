@@ -51,6 +51,12 @@
                                 <span>Pasien</span>
                             </a>
                         </li>
+                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/laporan' || $_SERVER["REQUEST_URI"] == '/laporan') ? 'active' : '' ?>">
+                            <a href="<?= base_url('laporan') ?>" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-fill"></i>
+                                <span>Laporan</span>
+                            </a>
+                        </li>
 
                         <li class="sidebar-title">Master Data</li>
 
@@ -148,4 +154,3 @@
                     </div>
                 </div>
                 <section class="section">
-                    <?php echo $p = date('m/d/Y h:i:s a', time()) ?>

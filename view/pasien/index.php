@@ -3,6 +3,23 @@ $pageheading = 'Data Pasien';
 include('../../config/config.php');
 include('../../view/template/header.php');
 ?>
+<?php
+if (isset($_SESSION['addsuccess'])) { ?>
+    <div class="alert alert-success alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+        <?= $_SESSION['addsuccess'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+    unset($_SESSION['addsuccess']);
+} elseif (isset($_SESSION['deletesuccess'])) { ?>
+    <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+        <?= $_SESSION['deletesuccess'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php
+    unset($_SESSION['deletesuccess']);
+}
+?>
 <div class="row">
     <div class="col-12">
         <div class="card">

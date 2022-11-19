@@ -3,7 +3,7 @@ $pageheading = 'Tambah Data Pasien';
 include('../../config/config.php');
 include('../../view/template/header.php');
 ?>
-<form action="{{ url('pasien/store') }}" method="post">
+<form action="<?= base_url('config/pasien/add') ?>" method="post">
     <div class="row">
         <div class="col">
             <div class="card">
@@ -91,6 +91,7 @@ include('../../view/template/header.php');
             data: "nik=" + nik,
             success: function(data) {
                 obj = JSON.parse(data);
+                console.log(obj);
                 if (jQuery.isEmptyObject(obj)) {
                     $("#pesannik").addClass("text-danger mt-1")
                     $("#pesannik").html("<small>Data NIK Dari Pasien Tidak Tersedia</small>");
@@ -106,7 +107,7 @@ include('../../view/template/header.php');
                     $("#pesannik").html("<small>Data NIK Dari Pasien Tersedia</small>");
                     $("#nama").val(obj.nama);
                     $("#tempat_lahir").val(obj.tempat_lahir);
-                    $("#tanggal_lahir").val(obj.tanggal_lahir);
+                    $("#tanggal_lahir").val(obj.tgl_lahir);
                     $("#jenis_kelamin").val(obj.jenis_kelamin);
                     $("#gol_darah").val(obj.gol_darah);
                     $("#alamat").val(obj.alamat);

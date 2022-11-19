@@ -2,7 +2,7 @@
 $pageheading = 'Dashboard';
 include('../../config/config.php');
 include('../../view/template/header.php');
-$queryHari = mysqli_query($con, "SELECT DAY(created_at) FROM pasiens WHERE DAY(created_at) = now();");
+$queryHari = mysqli_query($con, "SELECT DAY(created_at) FROM pasiens WHERE DAY(created_at) = DAYOFMONTH(NOW());");
 $hari = mysqli_num_rows($queryHari);
 $queryPasien = mysqli_query($con, "SELECT id_pasien FROM pasiens;");
 $pasien = mysqli_num_rows($queryPasien);
