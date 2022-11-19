@@ -13,7 +13,7 @@ if (isset($_SESSION['login']) == 'true') {
                         <a href="<?= base_url('pasien/add') ?>"><button type="button" class="btn btn-primary">Tambah
                                 Pasien</button></a>
                     </div>
-                    <table class="table" id="table1">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>No</th>

@@ -53,4 +53,17 @@ INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_l
 
 SELECT * FROM pasiens;
 
-SELECT DATE(created_at) FROM pasiens;
+
+CREATE TABLE login(
+	id_login INT(2) PRIMARY KEY AUTO_INCREMENT,
+	username VARCHAR(60),
+	password VARCHAR(100),
+	role VARCHAR(30)
+);
+
+INSERT INTO login(username, password, role) VALUES
+('admin', SHA1('admin1234'), 'Administrator');
+
+SELECT * FROM login WHERE username='admin' AND PASSWORD='';
+
+SELECT DAY(created_at) FROM pasiens WHERE DAY(created_at) = DAYOFMONTH(NOW());
