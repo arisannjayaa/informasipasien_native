@@ -67,3 +67,5 @@ INSERT INTO login(username, password, role) VALUES
 SELECT * FROM login WHERE username='admin' AND PASSWORD='';
 
 SELECT DAY(created_at) FROM pasiens WHERE DAY(created_at) = DAYOFMONTH(NOW());
+
+SELECT * FROM pasiens ORDER BY id_pasien DESC LIMIT 1
