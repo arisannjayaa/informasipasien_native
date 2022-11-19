@@ -18,7 +18,7 @@ if (!isset($_SESSION['login'])) { ?>
     <body>
         <div class="container">
             <div class="row justify-content-center align-items-center" style="height: 100vh;">
-                <div class="col-lg-3">
+                <div class="col-lg-4 col-md-6 col-xl-3 col-12">
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <div class="row">

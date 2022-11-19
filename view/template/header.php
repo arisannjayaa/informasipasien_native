@@ -38,19 +38,19 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/dashboard') ? 'active' : '' ?>">
+                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/dashboard' || request_uri($_SERVER["REQUEST_URI"]) == 'dashboard') ? 'active' : '' ?>">
                             <a href="<?= base_url('dashboard') ?>" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/pasien/list' || $_SERVER["REQUEST_URI"] == '/pasien/add') ? 'active' : '' ?>">
+                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/pasien/list' || $_SERVER["REQUEST_URI"] == '/pasien/add' || $_SERVER["REQUEST_URI"] == '/pasien/edit' || request_uri($_SERVER["REQUEST_URI"]) == 'pasien') ? 'active' : '' ?>">
                             <a href="<?= base_url('pasien/list') ?>" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Pasien</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/laporan' || $_SERVER["REQUEST_URI"] == '/laporan') ? 'active' : '' ?>">
+                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/laporan' || request_uri($_SERVER["REQUEST_URI"]) == 'laporan') ? 'active' : '' ?>">
                             <a href="<?= base_url('laporan') ?>" class='sidebar-link'>
                                 <i class="bi bi-file-earmark-fill"></i>
                                 <span>Laporan</span>
