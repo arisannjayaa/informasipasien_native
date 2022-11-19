@@ -1,68 +1,65 @@
 <?php
 include('../../config/config.php');
-?>
+if (!isset($_SESSION['login'])) { ?>
+    <!DOCTYPE html>
+    <html lang="en">
 
-<!DOCTYPE html>
-<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
+        <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/auth.css') ?>">
+        <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.svg') ?>" type="image/x-icon">
+        <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.png') ?>" type="image/png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/css/bootstrap.min.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Mazer Admin Dashboard</title>
-    <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/auth.css') ?>">
-    <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.svg') ?>" type="image/x-icon">
-    <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.png') ?>" type="image/png">
-</head>
-
-<body>
-    <div id="auth">
-
-        <div class="row h-100">
-            <div class="col-lg-5 col-12">
-                <div id="auth-left">
-                    <div class="auth-logo">
-                        <a href="index.html"><img src="<?= base_url('public/assets/images/logo/logo.svg') ?>" alt="Logo"></a>
-                    </div>
-                    <h1 class="auth-title">Log in.</h1>
-                    <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
-
-                    <form action="index.html">
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Username">
-                            <div class="form-control-icon">
-                                <i class="bi bi-person"></i>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="height: 100vh;">
+                <div class="col-lg-3">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <?php
+                                    if (isset($_SESSION['akunsalah'])) { ?>
+                                        <small class="text-danger"><?= $_SESSION['akunsalah'] ?></small>
+                                    <?php
+                                    }
+                                    ?>
+                                    <h4>Login</h4>
+                                    <p>Masukkan username dan password</p>
+                                </div>
                             </div>
+                            <form action="<?= base_url('config/auth/login') ?>" method="post">
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary">Login</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Password">
-                            <div class="form-control-icon">
-                                <i class="bi bi-shield-lock"></i>
-                            </div>
-                        </div>
-                        <div class="form-check form-check-lg d-flex align-items-end">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                                Keep me logged in
-                            </label>
-                        </div>
-                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
-                    </form>
-                    <div class="text-center mt-5 text-lg fs-4">
-                        <p class="text-gray-600">Don't have an account? <a href="auth-register.html" class="font-bold">Sign
-                                up</a>.</p>
-                        <p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right">
 
-                </div>
-            </div>
         </div>
+    </body>
 
-    </div>
-</body>
-
-</html>
+    </html>
+<?php
+} else {
+    header('location: ' . base_url('dashboard'));
+}
+unset($_SESSION['akunsalah']);
+?>

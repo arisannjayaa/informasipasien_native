@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informasi Pasien</title>
+    <title>Informasi Pasien | <?= $title ?></title>
 
     <link rel="stylesheet" href="<?= base_url('public/assets/extensions/sweetalert2/sweetalert2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/datatables.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/shared/iconly.css') ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/css/bootstrap.min.css" />
-
 </head>
 
 <body>
@@ -85,8 +84,8 @@
                                 <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="user-menu d-flex">
                                         <div class="user-name text-end me-3">
-                                            <h6 class="mb-0 text-gray-600">Admin</h6>
-                                            <p class="mb-0 text-sm text-gray-600">Administrator</p>
+                                            <h6 class="mb-0 text-gray-600"><?= ucfirst($_SESSION['username']) ?></h6>
+                                            <p class="mb-0 text-sm text-gray-600"><?= ucfirst($_SESSION['role']) ?></p>
                                         </div>
                                         <div class="user-img d-flex align-items-center">
                                             <div class="avatar avatar-md">
@@ -97,17 +96,15 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
                                     <li>
-                                        <h6 class="dropdown-header">Hello, Admin</h6>
+                                        <h6 class="dropdown-header">Hello, <?= ucfirst($_SESSION['username']) ?></h6>
                                     </li>
                                     <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My
                                             Profile</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
-                                            Pengaturan</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
+
+                                    <hr class="dropdown-divider">
                                     </li>
                                     <li class="dropdown-item">
-                                        <span>Darkmode switch</span>
+                                        <span>Mode Gelap</span>
                                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
                                                 <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -134,7 +131,7 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Keluar</a></li>
+                                    <li><a class="dropdown-item" href="<?= base_url('logout?logout') ?>"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Keluar</a></li>
                                 </ul>
                             </div>
                         </div>
