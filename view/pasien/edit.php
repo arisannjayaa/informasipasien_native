@@ -1,8 +1,8 @@
 <?php
 include('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
-    $title = 'Tambah Data Pasien';
-    $pageheading = 'Tambah Data Pasien';
+    $title = 'Edit Data Pasien';
+    $pageheading = 'Edit Data Pasien';
     include('../../view/template/header.php');
 ?>
     <form action="<?= base_url('config/pasien/update') ?>" method="post">

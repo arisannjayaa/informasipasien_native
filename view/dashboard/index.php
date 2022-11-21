@@ -8,6 +8,18 @@ if (isset($_SESSION['login']) == 'true') {
     $hari = mysqli_num_rows($queryHari);
     $queryPasien = mysqli_query($con, "SELECT id_pasien FROM pasiens;");
     $pasien = mysqli_num_rows($queryPasien);
+    $queryChart = mysqli_query($con, "SELECT COUNT(MONTHNAME(created_at)) AS jumlah, MONTHNAME(created_at) AS labels FROM pasiens GROUP BY MONTHNAME(created_at) ORDER BY MONTHNAME(created_at) DESC;");
+    $queryKelamin = mysqli_query($con, "SELECT jenis_kelamin, COUNT(jenis_kelamin) AS jumlah FROM pasiens GROUP BY jenis_kelamin;");
+    while ($datachart = mysqli_fetch_assoc($queryChart)) {
+        $bars['data'][] = (int)$datachart['jumlah'];
+        $bars['label'][] = $datachart['labels'];
+    }
+    while ($datapie = mysqli_fetch_assoc($queryKelamin)) {
+        $pies['data'][] = (int)$datapie['jumlah'];
+        $pies['label'][] = $datapie['jenis_kelamin'];
+    }
+    $pie = json_encode($pies);
+    $bar = json_encode($bars);
 ?>
 
     <div class="row">
@@ -29,7 +41,7 @@ if (isset($_SESSION['login']) == 'true') {
         </div>
     </div>
     <div class="row">
-        <div class="col-6 col-lg col-md-6">
+        <div class="col-3 col-lg col-md-6">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
@@ -50,7 +62,7 @@ if (isset($_SESSION['login']) == 'true') {
                 </div>
             </div>
         </div>
-        <div class="col-6 col-lg col-md-6">
+        <div class="col-3 col-lg col-md-6">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
@@ -72,6 +84,91 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
     </div>
+    <div class="d-grid">
+        <div class="row">
+            <div class="col-6 col-lg-8 col-md-6">
+                <div class="card" style="height: 350px">
+                    <div class="card-body">
+                        <div>
+                            <canvas id="myBar"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-4 col-md-6">
+                <div class="card" style="height: 350px">
+                    <div class="card-body">
+                        <div>
+                            <canvas id="myPolar"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="<?= base_url('public/assets/extensions/chart.js/dist/chart.umd.js') ?>"></script>
+    <script>
+        const barCtx = document.getElementById('myBar').getContext('2d');
+        const polarCtx = document.getElementById('myPolar').getContext('2d');
+        var bar = JSON.parse(`<?= $bar ?>`);
+        var pie = JSON.parse(`<?= $pie ?>`);
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: bar.label,
+                datasets: [{
+                    label: 'Data Pasien Bulanan',
+                    data: bar.data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(201, 203, 207, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            // forces step size to be 50 units
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+        new Chart(polarCtx, {
+            type: 'doughnut',
+            data: {
+                labels: pie.label,
+                datasets: [{
+                    label: 'Jenis Kelamin',
+                    data: pie.data,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            }
+        });
+    </script>
 <?php
     include('../../view/template/footer.php');
 } else {

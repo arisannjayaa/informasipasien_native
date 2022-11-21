@@ -68,4 +68,23 @@ SELECT * FROM login WHERE username='admin' AND PASSWORD='';
 
 SELECT DAY(created_at) FROM pasiens WHERE DAY(created_at) = DAYOFMONTH(NOW());
 
-SELECT * FROM pasiens ORDER BY id_pasien DESC LIMIT 1
+SELECT * FROM pasiens ORDER BY id_pasien DESC LIMIT 1;
+
+SELECT COUNT(MONTHNAME(created_at)) AS jumlah FROM pasiens GROUP BY MONTHNAME(created_at) ORDER BY MONTHNAME(created_at) DESC;
+
+SELECT 
+    COUNT(MONTHNAME(created_at)) AS jumlah,
+    MONTHNAME(created_at) AS labels
+FROM
+    pasiens
+GROUP BY labels
+ORDER BY MONTHNAME(created_at) DESC;
+
+SELECT 
+    *
+FROM
+    pasiens;
+    
+select jenis_kelamin, count(jenis_kelamin) as from pasiens group by jenis_kelamin;
+
+use db_informasipasien_native;
