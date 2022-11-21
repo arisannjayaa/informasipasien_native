@@ -74,17 +74,26 @@ SELECT COUNT(MONTHNAME(created_at)) AS jumlah FROM pasiens GROUP BY MONTHNAME(cr
 
 SELECT 
     COUNT(MONTHNAME(created_at)) AS jumlah,
-    MONTHNAME(created_at) AS labels
+    MONTHNAME(created_at) AS labels,
+    day(created_at)
 FROM
     pasiens
 GROUP BY labels
-ORDER BY MONTHNAME(created_at) DESC;
+ORDER BY month(labels);
 
 SELECT 
     *
 FROM
     pasiens;
     
-select jenis_kelamin, count(jenis_kelamin) as from pasiens group by jenis_kelamin;
+select jenis_kelamin, count(jenis_kelamin) as jumlah from pasiens group by jenis_kelamin;
 
 use db_informasipasien_native;
+
+SELECT 
+    MONTH(created_at) AS labels,
+    COUNT(MONTH(created_at)) AS data
+FROM
+    pasiens
+GROUP BY labels
+ORDER BY labels ASC;

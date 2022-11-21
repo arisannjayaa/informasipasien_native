@@ -8,11 +8,11 @@ if (isset($_SESSION['login']) == 'true') {
     $hari = mysqli_num_rows($queryHari);
     $queryPasien = mysqli_query($con, "SELECT id_pasien FROM pasiens;");
     $pasien = mysqli_num_rows($queryPasien);
-    $queryChart = mysqli_query($con, "SELECT COUNT(MONTHNAME(created_at)) AS jumlah, MONTHNAME(created_at) AS labels FROM pasiens GROUP BY MONTHNAME(created_at) ORDER BY MONTHNAME(created_at) DESC;");
+    $queryBar = mysqli_query($con, "SELECT MONTH(created_at) AS labels, COUNT(MONTH(created_at)) AS jumlah FROM pasiens GROUP BY labels ORDER BY labels ASC;");
     $queryKelamin = mysqli_query($con, "SELECT jenis_kelamin, COUNT(jenis_kelamin) AS jumlah FROM pasiens GROUP BY jenis_kelamin;");
-    while ($datachart = mysqli_fetch_assoc($queryChart)) {
+    while ($datachart = mysqli_fetch_assoc($queryBar)) {
         $bars['data'][] = (int)$datachart['jumlah'];
-        $bars['label'][] = $datachart['labels'];
+        $bars['label'][] = bulan($datachart['labels']);
     }
     while ($datapie = mysqli_fetch_assoc($queryKelamin)) {
         $pies['data'][] = (int)$datapie['jumlah'];
@@ -20,6 +20,8 @@ if (isset($_SESSION['login']) == 'true') {
     }
     $pie = json_encode($pies);
     $bar = json_encode($bars);
+    // print_r($bars);
+    // die();
 ?>
 
     <div class="row">
@@ -113,7 +115,7 @@ if (isset($_SESSION['login']) == 'true') {
         var bar = JSON.parse(`<?= $bar ?>`);
         var pie = JSON.parse(`<?= $pie ?>`);
         new Chart(barCtx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: bar.label,
                 datasets: [{
@@ -160,9 +162,9 @@ if (isset($_SESSION['login']) == 'true') {
                     label: 'Jenis Kelamin',
                     data: pie.data,
                     backgroundColor: [
-                        'rgb(255, 99, 132)',
+                        'rgb(75, 192, 192)',
                         'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
+                        'rgb(153, 102, 255)',
                     ],
                     hoverOffset: 4
                 }]
