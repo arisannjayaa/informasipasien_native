@@ -9,10 +9,6 @@ if (isset($_SESSION['login']) == 'true') {
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-end align-items-center mb-3">
-                        <a href="<?= base_url('pasien/add') ?>"><button type="button" class="btn btn-primary">Tambah
-                                Pasien</button></a>
-                    </div>
                     <table class="table">
                         <thead>
                             <tr>

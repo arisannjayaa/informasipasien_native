@@ -51,9 +51,6 @@ INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_l
 ('Meidi Dharma', '5103050101010006', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW()),
 ('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW());
 
-SELECT * FROM pasiens;
-
-
 CREATE TABLE login(
 	id_login INT(2) PRIMARY KEY AUTO_INCREMENT,
 	username VARCHAR(60),
@@ -64,36 +61,47 @@ CREATE TABLE login(
 INSERT INTO login(username, password, role) VALUES
 ('admin', SHA1('admin1234'), 'Administrator');
 
-SELECT * FROM login WHERE username='admin' AND PASSWORD='';
-
-SELECT DAY(created_at) FROM pasiens WHERE DAY(created_at) = DAYOFMONTH(NOW());
-
-SELECT * FROM pasiens ORDER BY id_pasien DESC LIMIT 1;
-
-SELECT COUNT(MONTHNAME(created_at)) AS jumlah FROM pasiens GROUP BY MONTHNAME(created_at) ORDER BY MONTHNAME(created_at) DESC;
-
+-- Menampilkan data berdasarkan jumlah pasien bulan sekarang
 SELECT 
-    COUNT(MONTHNAME(created_at)) AS jumlah,
-    MONTHNAME(created_at) AS labels,
-    day(created_at)
+    DAY(created_at)
 FROM
     pasiens
-GROUP BY labels
-ORDER BY month(labels);
+WHERE
+    DAY(created_at) = DAYOFMONTH(NOW());
 
 SELECT 
     *
 FROM
-    pasiens;
-    
-select jenis_kelamin, count(jenis_kelamin) as jumlah from pasiens group by jenis_kelamin;
+    pasiens
+ORDER BY id_pasien DESC
+LIMIT 1;
 
-use db_informasipasien_native;
-
+-- Menampilkan data 
 SELECT 
-    MONTH(created_at) AS labels,
-    COUNT(MONTH(created_at)) AS data
+    jenis_kelamin, COUNT(jenis_kelamin) AS jumlah
 FROM
     pasiens
-GROUP BY labels
-ORDER BY labels ASC;
+GROUP BY jenis_kelamin;
+
+-- Buat view untuk menampilkan data berdasarkan bulan tahun sekarang
+CREATE VIEW show_pasien_month AS SELECT MONTH
+( created_at ) AS labels,
+COUNT( MONTH ( created_at ) ) AS data 
+FROM
+	pasiens 
+WHERE
+	YEAR ( created_at ) = YEAR ( NOW( ) ) 
+GROUP BY
+	labels 
+ORDER BY
+	labels ASC;
+
+-- Create view untuk menampilkan data berdasarkan jumlah gender
+CREATE VIEW show_gender AS
+    SELECT 
+        jenis_kelamin, COUNT(jenis_kelamin) AS jumlah
+    FROM
+        pasiens
+    GROUP BY jenis_kelamin;
+
+select * from pasiens;

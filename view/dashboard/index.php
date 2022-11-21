@@ -8,10 +8,10 @@ if (isset($_SESSION['login']) == 'true') {
     $hari = mysqli_num_rows($queryHari);
     $queryPasien = mysqli_query($con, "SELECT id_pasien FROM pasiens;");
     $pasien = mysqli_num_rows($queryPasien);
-    $queryBar = mysqli_query($con, "SELECT MONTH(created_at) AS labels, COUNT(MONTH(created_at)) AS jumlah FROM pasiens GROUP BY labels ORDER BY labels ASC;");
-    $queryKelamin = mysqli_query($con, "SELECT jenis_kelamin, COUNT(jenis_kelamin) AS jumlah FROM pasiens GROUP BY jenis_kelamin;");
+    $queryBar = mysqli_query($con, "SELECT * FROM show_pasien_month;");
+    $queryKelamin = mysqli_query($con, "SELECT * FROM show_gender");
     while ($datachart = mysqli_fetch_assoc($queryBar)) {
-        $bars['data'][] = (int)$datachart['jumlah'];
+        $bars['data'][] = (int)$datachart['data'];
         $bars['label'][] = bulan($datachart['labels']);
     }
     while ($datapie = mysqli_fetch_assoc($queryKelamin)) {
@@ -20,8 +20,6 @@ if (isset($_SESSION['login']) == 'true') {
     }
     $pie = json_encode($pies);
     $bar = json_encode($bars);
-    // print_r($bars);
-    // die();
 ?>
 
     <div class="row">
@@ -119,7 +117,7 @@ if (isset($_SESSION['login']) == 'true') {
             data: {
                 labels: bar.label,
                 datasets: [{
-                    label: 'Data Pasien Bulanan',
+                    label: 'Data Pasien <?= date('Y') ?>',
                     data: bar.data,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
