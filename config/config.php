@@ -9,7 +9,7 @@ if (mysqli_connect_error()) {
 
 function base_url($url = null)
 {
-    $base_url = "http://localhost/informasipasien_native";
+    $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/informasipasien_native";
     if ($url != null) {
         return $base_url . "/" . $url;
     } else {
