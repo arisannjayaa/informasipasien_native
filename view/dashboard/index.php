@@ -10,18 +10,26 @@ if (isset($_SESSION['login']) == 'true') {
     $pasien = mysqli_num_rows($queryPasien);
     $queryBar = mysqli_query($con, "SELECT * FROM show_pasien_month;");
     $queryKelamin = mysqli_query($con, "SELECT * FROM show_gender");
-    while ($datachart = mysqli_fetch_assoc($queryBar)) {
-        $bars['data'][] = (int)$datachart['data'];
-        $bars['label'][] = bulan($datachart['labels']);
-    }
-    while ($datapie = mysqli_fetch_assoc($queryKelamin)) {
-        $pies['data'][] = (int)$datapie['jumlah'];
-        $pies['label'][] = $datapie['jenis_kelamin'];
-    }
-    $pie = json_encode($pies);
-    $bar = json_encode($bars);
-?>
 
+    if ($queryBar->num_rows > 0 && $queryKelamin->num_rows > 0) {
+        while ($datachart = mysqli_fetch_assoc($queryBar)) {
+            $bars['data'][] = (int)$datachart['data'];
+            $bars['label'][] = bulan($datachart['labels']);
+        }
+        while ($datapie = mysqli_fetch_assoc($queryKelamin)) {
+            $pies['data'][] = (int)$datapie['jumlah'];
+            $pies['label'][] = $datapie['jenis_kelamin'];
+        }
+    } else {
+        $bars['data'][] = [];
+        $bars['label'][] = [];
+        $pies['data'][] = [];
+        $pies['label'][] = [];
+    }
+    $bar = json_encode($bars);
+    $pie = json_encode($pies);
+
+?>
     <div class="row">
         <div class="col">
             <div class="card">
