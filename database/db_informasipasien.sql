@@ -1,23 +1,23 @@
-CREATE DATABASE db_informasipasien_native;
+`db_informasipasien_native`CREATE DATABASE db_informasipasien_native;
 
 USE db_informasipasien_native;
 
 CREATE TABLE ktps(
-	`nik` varchar(20) NOT NULL,
-  `nama` varchar(100) DEFAULT NULL,
-  `tempat_lahir` varchar(50) DEFAULT NULL,
-  `tgl_lahir` date DEFAULT NULL,
-  `jenis_kelamin` varchar(30) DEFAULT NULL,
-  `gol_darah` varchar(2) DEFAULT NULL,
-  `alamat` varchar(100) DEFAULT NULL,
-  `kelurahan` varchar(100) DEFAULT NULL,
-  `kecamatan` varchar(100) DEFAULT NULL,
-  `agama` varchar(50) DEFAULT NULL,
-  `status_kawin` varchar(30) DEFAULT NULL,
-  `pekerjaan` varchar(100) DEFAULT NULL,
-  `kewarganegaraan` varchar(100) DEFAULT NULL,
-  `berlaku` varchar(50) DEFAULT NULL,
-  `tgl_buat` date DEFAULT NULL
+	`nik` VARCHAR(20) NOT NULL,
+  `nama` VARCHAR(100) DEFAULT NULL,
+  `tempat_lahir` VARCHAR(50) DEFAULT NULL,
+  `tgl_lahir` DATE DEFAULT NULL,
+  `jenis_kelamin` VARCHAR(30) DEFAULT NULL,
+  `gol_darah` VARCHAR(2) DEFAULT NULL,
+  `alamat` VARCHAR(100) DEFAULT NULL,
+  `kelurahan` VARCHAR(100) DEFAULT NULL,
+  `kecamatan` VARCHAR(100) DEFAULT NULL,
+  `agama` VARCHAR(50) DEFAULT NULL,
+  `status_kawin` VARCHAR(30) DEFAULT NULL,
+  `pekerjaan` VARCHAR(100) DEFAULT NULL,
+  `kewarganegaraan` VARCHAR(100) DEFAULT NULL,
+  `berlaku` VARCHAR(50) DEFAULT NULL,
+  `tgl_buat` DATE DEFAULT NULL
 );
 
 INSERT INTO ktps(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tgl_lahir, alamat) VALUES
@@ -30,17 +30,24 @@ INSERT INTO ktps(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tgl_lahir, a
 ('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua');
 
 CREATE TABLE pasiens(
-	id_pasien INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	id_pasien INT AUTO_INCREMENT,
 	nik VARCHAR(20) NOT NULL,
 	nama VARCHAR(100) NOT NULL,
-	jenis_kelamin varchar(30) NOT NULL,
+	jenis_kelamin VARCHAR(30) NOT NULL,
 	gol_darah VARCHAR(2) NOT NULL,
 	tempat_lahir VARCHAR(60) NOT NULL,
 	tanggal_lahir DATE NOT NULL,
 	alamat VARCHAR(100) NOT NULL,
 	created_at TIMESTAMP NOT NULL,
-	updated_at TIMESTAMP NOT NULL
+	updated_at TIMESTAMP NOT NULL,
+	kartu_rs VARCHAR(50),
+	info_pasien VARCHAR(50),
+	PRIMARY KEY (id_pasien)
 );
+
+SET SQL_MODE='ALLOW_INVALID_DATES';
+
+DROP TABLE pasiens;
 
 INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at) VALUES
 ('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW()),
@@ -54,11 +61,11 @@ INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_l
 CREATE TABLE login(
 	id_login INT(2) PRIMARY KEY AUTO_INCREMENT,
 	username VARCHAR(60),
-	password VARCHAR(100),
-	role VARCHAR(30)
+	PASSWORD VARCHAR(100),
+	ROLE VARCHAR(30)
 );
 
-INSERT INTO login(username, password, role) VALUES
+INSERT INTO login(username, PASSWORD, ROLE) VALUES
 ('admin', SHA1('admin1234'), 'Administrator');
 
 -- Menampilkan data berdasarkan jumlah pasien bulan sekarang
@@ -86,7 +93,7 @@ GROUP BY jenis_kelamin;
 -- Buat view untuk menampilkan data berdasarkan bulan tahun sekarang
 CREATE VIEW show_pasien_month AS SELECT MONTH
 ( created_at ) AS labels,
-COUNT( MONTH ( created_at ) ) AS data 
+COUNT( MONTH ( created_at ) ) AS DATA 
 FROM
 	pasiens 
 WHERE
@@ -104,4 +111,18 @@ CREATE VIEW show_gender AS
         pasiens
     GROUP BY jenis_kelamin;
 
-select * from pasiens;
+-- Create view untuk menampilkan data berdasarkan range umur
+CREATE VIEW show_umur AS
+SELECT
+    CASE
+        WHEN umur < 20 THEN '0 - 20'
+        WHEN umur BETWEEN 20 AND 40 THEN '20 - 40'
+        WHEN umur BETWEEN 41 AND 60 THEN '41 - 60'
+        WHEN umur >= 61 THEN '61 - 100'
+        WHEN umur IS NULL THEN '(NULL)'
+    END AS labels,
+    COUNT(*) AS jumlah
+
+FROM (SELECT TIMESTAMPDIFF(YEAR, tanggal_lahir, CURDATE()) AS umur FROM pasiens) AS dummy_table
+GROUP BY labels
+ORDER BY labels;
