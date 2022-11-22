@@ -8,12 +8,12 @@ if (isset($_SESSION['login']) == 'true') {
     $hari = mysqli_num_rows($queryHari);
     $queryPasien = mysqli_query($con, "SELECT id_pasien FROM pasiens;");
     $pasien = mysqli_num_rows($queryPasien);
-    $queryBar = mysqli_query($con, "SELECT * FROM show_pasien_month;");
+    $queryBar = mysqli_query($con, "SELECT * FROM show_umur;");
     $queryKelamin = mysqli_query($con, "SELECT * FROM show_gender");
 
     if ($queryBar->num_rows > 0 && $queryKelamin->num_rows > 0) {
         while ($datachart = mysqli_fetch_assoc($queryBar)) {
-            $bars['data'][] = (int)$datachart['data'];
+            $bars['data'][] = (int)$datachart['jumlah'];
             $bars['label'][] = bulan($datachart['labels']);
         }
         while ($datapie = mysqli_fetch_assoc($queryKelamin)) {
@@ -119,6 +119,7 @@ if (isset($_SESSION['login']) == 'true') {
         const barCtx = document.getElementById('myBar').getContext('2d');
         const polarCtx = document.getElementById('myPolar').getContext('2d');
         var bar = JSON.parse(`<?= $bar ?>`);
+        console.log(bar);
         var pie = JSON.parse(`<?= $pie ?>`);
         new Chart(barCtx, {
             type: 'line',
