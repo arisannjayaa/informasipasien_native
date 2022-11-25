@@ -95,7 +95,7 @@ if (isset($_SESSION['login']) == 'true') {
     <div class="d-grid">
         <div class="row">
             <div class="col-6 col-lg-8 col-md-6">
-                <div class="card" style="height: 350px">
+                <div class="card">
                     <div class="card-body">
                         <div>
                             <canvas id="myBar"></canvas>
@@ -104,7 +104,7 @@ if (isset($_SESSION['login']) == 'true') {
                 </div>
             </div>
             <div class="col-6 col-lg-4 col-md-6">
-                <div class="card" style="height: 350px">
+                <div class="card">
                     <div class="card-body">
                         <div>
                             <canvas id="myPolar"></canvas>
