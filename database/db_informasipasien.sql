@@ -50,13 +50,13 @@ SET SQL_MODE='ALLOW_INVALID_DATES';
 DROP TABLE pasiens;
 
 INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at) VALUES
-('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW()),
-('Katon Jaya Deva Yogananada', '5103050101010002', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW()),
-('Iwan Sandhitama', '5103050101010003', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW()),
-('Dedo Karmanata', '5103050101010004', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW()),
-('Walter Andrian', '5103050101010005', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW()),
-('Meidi Dharma', '5103050101010006', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW()),
-('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua', NOW(), NOW());
+('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-10-31', 'Nusa Dua', NOW(), NOW()),
+('Katon Jaya Deva Yogananada', '5103050101010002', 'A', 'Laki-laki', 'Badung', '2002-05-24', 'Nusa Dua', NOW(), NOW()),
+('Iwan Sandhitama', '5103050101010003', 'A', 'Laki-laki', 'Buleleng', '2002-08-20', 'Nusa Dua', NOW(), NOW()),
+('Dedo Karmanata', '5103050101010004', 'A', 'Laki-laki', 'Karangasem', '2002-09-04', 'Nusa Dua', NOW(), NOW()),
+('Walter Andrian', '5103050101010005', 'A', 'Laki-laki', 'Bekasi', '2002-08-09', 'Nusa Dua', NOW(), NOW()),
+('Meidi Dharma', '5103050101010006', 'A', 'Laki-laki', 'Denpasar', '2002-5-28', 'Nusa Dua', NOW(), NOW()),
+('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2002-07-15', 'Nusa Dua', NOW(), NOW());
 
 CREATE TABLE login(
 	id_login INT(2) PRIMARY KEY AUTO_INCREMENT,
