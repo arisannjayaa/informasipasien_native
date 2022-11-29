@@ -68,12 +68,13 @@ if (isset($_SESSION['login']) == 'true') {
                                                         Edit</span></li>
                                                 <li><span role="button" class="dropdown-item delete" data-id="<?= $data['id_pasien'] ?>" data-nama="<?= $data['nama'] ?>"><i class="bi bi-trash-fill text-danger"></i>
                                                         Delete</span></li>
-                                                <li><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
+                                                <li><a href="<?php echo "./../files/".$data['kartu_rs'].".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
                                                         Kartu Pasien</span></li>
                                                 <li><span role="button" class="dropdown-item detail"><i class="bi bi-eye-fill"></i>
                                                         Lihat Detail</span></li>
-                                                <li><span role="button" class="dropdown-item cetakinfo"><i class="bi bi-file-earmark-fill text-secondary"></i>
-                                                        Cetak Informasi Pasien</span></li>
+                                                <li><a href="<?=base_url('files/').$data['info_pasien'].'.pdf'?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
+                                                    <i class="bi bi-file-earmark-fill text-secondary"></i>
+                                                        Cetak Informasi Pasien</span></a></li>
                                             </ul>
                                         </div>
                                     </td>

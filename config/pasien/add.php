@@ -1,5 +1,34 @@
 <?php
 include('../config.php');
+
+$x = 0;
+for ($x = 0; $x < 10; $x++) {
+        
+        $ee = rand();
+        $data = mysqli_query($con, "select * from pasiens where kartu_rs='$ee'");
+        $cek = mysqli_num_rows($data);
+        if($cek > 0){
+            $x= 1;
+        }else{
+            $x= 11;
+            $title_pdf1 = $ee;
+        }
+}
+
+$x = 0;
+for ($x = 0; $x < 10; $x++) {
+        
+        $ee = rand();
+        $data = mysqli_query($con, "select * from pasiens where info_pasien='$ee'");
+        $cek = mysqli_num_rows($data);
+        if($cek > 0){
+            $x= 1;
+        }else{
+            $x= 11;
+            $title_pdf2 = $ee;
+        }
+}
+
 $nama               = $_POST['nama'];
 $nik                = $_POST['nik'];
 $jenis_kelamin      = $_POST['jenis_kelamin'];
@@ -9,6 +38,8 @@ $tanggal_lahir      = $_POST['tanggal_lahir'];
 $alamat             = $_POST['alamat'];
 $created_at         = date('Y-m-d H:i:s');
 $updated_at         = date('Y-m-d H:i:s');
+$kartu_rs           = $title_pdf1;
+$info_pasien        = $title_pdf2;
 
 $querycek = mysqli_query($con, "SELECT nik FROM pasiens WHERE nik='$nik'");
 $queryktps = mysqli_query($con, "SELECT nik FROM ktps WHERE nik='$nik'");
@@ -23,10 +54,13 @@ if($pasien['nik'] == $nik) {
     $_SESSION['gagal'] = 'Gagal menambahkan data pasien';
     header('location: '.base_url('pasien/add'));
 }else {
-    $query = mysqli_query($con, "INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at) VALUES ('$nama', '$nik', '$gol_darah', '$jenis_kelamin', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$created_at', '$updated_at')");
+    $query = mysqli_query($con, "INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at, kartu_rs, info_pasien) VALUES ('$nama', '$nik', '$gol_darah', '$jenis_kelamin', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$created_at', '$updated_at', '$kartu_rs', '$info_pasien')");
 
 }
 // print_r($pasien); die();
+
+include('create_kartu_rs_dan_info_pasien.php');
+
 
 if ($query) {
     $_SESSION['addsuccess'] = 'Berhasil menambahkan data pasien';

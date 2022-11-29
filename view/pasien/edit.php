@@ -68,6 +68,15 @@ if (isset($_SESSION['login']) == 'true') {
                                         <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"><?= $data['alamat'] ?></textarea>
                                         <label for="alamat">Alamat tinggal</label>
                                     </div>
+
+                                    <?php //-------------------------update katon-----------------------------------?>
+
+                                    <div class="col form-floating">
+                                        <textarea type="text" class="form-control" id="kartu_rs" placeholder="Kartu RS" name="kartu_rs" hidden><?= $data['kartu_rs'] ?></textarea>
+                                    </div>
+                                    <div class="col form-floating">
+                                        <textarea type="text" class="form-control" id="info_pasien" placeholder="Kartu Informasi pasien" name="info_pasien" hidden><?= $data['info_pasien'] ?></textarea>
+                                    </div>
                                 </div>
                             <?php
                             }
