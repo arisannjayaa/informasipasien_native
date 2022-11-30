@@ -37,22 +37,22 @@ if (isset($_SESSION['login']) == 'true') {
                             <div class="col">
                                 <h5>Data Diri Pasien</h5>
                                 <div class="form-floating mb-3">
-                                    <input readonly type="text" class="form-control" id="nama" placeholder="Nama lengkap" name="nama">
+                                    <input type="text" class="form-control" id="nama" placeholder="Nama lengkap" name="nama">
                                     <label for="nama">Nama lengkap</label>
                                 </div>
                                 <div class="d-flex mb-3">
                                     <div class="col-7 form-floating me-3">
-                                        <input readonly type="text" class="form-control" id="tempat_lahir" placeholder="Tempat lahir" name="tempat_lahir">
+                                        <input type="text" class="form-control" id="tempat_lahir" placeholder="Tempat lahir" name="tempat_lahir">
                                         <label for="tempat_lahir">Tempat lahir</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <input readonly type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal lahir" name="tanggal_lahir">
+                                        <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal lahir" name="tanggal_lahir">
                                         <label for="tanggal_lahir">Tanggal lahir</label>
                                     </div>
                                 </div>
                                 <div class="d-flex mb-3">
                                     <div class="col-9 form-floating me-3">
-                                        <select readonly class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
+                                        <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
                                             <option value="" selected>Pilih jenis kelamin</option>
                                             <option value="Laki-laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
@@ -61,7 +61,7 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="jenis_kelamin">Jenis kelamin</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <select readonly class="form-select" id="gol_darah" aria-label="Golongan darah" name="gol_darah">
+                                        <select class="form-select" id="gol_darah" aria-label="Golongan darah" name="gol_darah">
                                             <option value="" selected>Pilih golongan darah</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -72,7 +72,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     </div>
                                 </div>
                                 <div class="col form-floating">
-                                    <textarea readonly type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"></textarea>
+                                    <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"></textarea>
                                     <label for="alamat">Alamat tinggal</label>
                                 </div>
                             </div>
