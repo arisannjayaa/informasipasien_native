@@ -57,12 +57,24 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-title">Master Data</li>
+                        <li class="sidebar-title">Akun</li>
 
+                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/profil' || request_uri($_SERVER["REQUEST_URI"]) == 'profil') ? 'active' : '' ?>">
+                            <a href="<?= base_url('profil') ?>" class='sidebar-link'>
+                                <i class="bi bi-person-fill"></i>
+                                <span>Profil</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?= ($_SERVER["REQUEST_URI"] == '/pengaturan' || request_uri($_SERVER["REQUEST_URI"]) == 'pengaturan') ? 'active' : '' ?>">
+                            <a href="<?= base_url('pengaturan') ?>" class='sidebar-link'>
+                                <i class="bi bi-gear-fill"></i>
+                                <span>Pengaturan</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-hospital-fill"></i>
-                                <span>Dokumen</span>
+                            <a href="<?= base_url('logout?logout') ?>" class='sidebar-link'>
+                                <i class="bi bi-door-open-fill"></i>
+                                <span>Keluar</span>
                             </a>
                         </li>
                     </ul>
@@ -96,10 +108,10 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
                                     <li>
-                                        <h6 class="dropdown-header">Hello, <?= ucfirst($_SESSION['username']) ?></h6>
+                                        <h6 class="dropdown-header">Halo, <?= ucfirst($_SESSION['username']) ?></h6>
                                     </li>
-                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My
-                                            Profile</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> Profil Saya</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i> Pengaturan</a></li>
 
                                     <hr class="dropdown-divider">
                                     </li>

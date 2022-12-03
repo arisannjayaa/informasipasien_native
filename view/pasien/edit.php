@@ -1,9 +1,9 @@
 <?php
-include('../../config/config.php');
+require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Edit Data Pasien';
     $pageheading = 'Edit Data Pasien';
-    include('../../view/template/header.php');
+    require_once('../../view/template/header.php');
 ?>
     <form action="<?= base_url('config/pasien/update') ?>" method="post">
         <div class="row">
@@ -69,7 +69,8 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="alamat">Alamat tinggal</label>
                                     </div>
 
-                                    <?php //-------------------------update katon-----------------------------------?>
+                                    <?php //-------------------------update katon-----------------------------------
+                                    ?>
 
                                     <div class="col form-floating">
                                         <textarea type="text" class="form-control" id="kartu_rs" placeholder="Kartu RS" name="kartu_rs" hidden><?= $data['kartu_rs'] ?></textarea>
@@ -94,7 +95,7 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
     </form>
-<?php include('../../view/template/footer.php');
+<?php require_once('../../view/template/footer.php');
 } else {
     header('location: ' . base_url('login'));
 }

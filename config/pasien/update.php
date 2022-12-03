@@ -1,5 +1,5 @@
 <?php
-include('../config.php');
+require_once('../config.php');
 $id                 = $_POST['id'];
 $nama               = $_POST['nama'];
 $nik                = $_POST['nik'];
@@ -15,7 +15,7 @@ $info_pasien        = $_POST['info_pasien'];
 $query = mysqli_query($con, "UPDATE pasiens SET nama='$nama', nik='$nik', jenis_kelamin='$jenis_kelamin', gol_darah='$gol_darah', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', updated_at='$updated_at' WHERE id_pasien='$id'");
 
 
-include('create_kartu_rs_dan_info_pasien.php');
+require_once('create_kartu_rs_dan_info_pasien.php');
 
 if ($query) {
     $_SESSION['updatesuccess'] = 'Berhasil mengupdate data pasien';

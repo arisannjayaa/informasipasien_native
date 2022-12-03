@@ -1,9 +1,9 @@
 <?php
-include('../../config/config.php');
+require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Data Pasien';
     $pageheading = 'Data Pasien';
-    include('../../view/template/header.php');
+    require_once('../../view/template/header.php');
 ?>
     <?php
     if (isset($_SESSION['addsuccess'])) { ?>
@@ -51,7 +51,7 @@ if (isset($_SESSION['login']) == 'true') {
                         <tbody>
                             <?php
                             $no = 1;
-                            $query = mysqli_query($con, "SELECT * FROM pasiens");
+                            $query = mysqli_query($con, "SELECT * FROM pasiens ORDER BY id_pasien ASC");
                             while ($data = mysqli_fetch_assoc($query)) { ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
@@ -68,13 +68,13 @@ if (isset($_SESSION['login']) == 'true') {
                                                         Edit</span></li>
                                                 <li><span role="button" class="dropdown-item delete" data-id="<?= $data['id_pasien'] ?>" data-nama="<?= $data['nama'] ?>"><i class="bi bi-trash-fill text-danger"></i>
                                                         Delete</span></li>
-                                                <li><a href="<?php echo "./../files/".$data['kartu_rs'].".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
-                                                        Kartu Pasien</span></li>
+                                                <li><a href="<?php echo "./../files/" . $data['kartu_rs'] . ".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
+                                                            Kartu Pasien</span></li>
                                                 <li><span role="button" class="dropdown-item detail"><i class="bi bi-eye-fill"></i>
                                                         Lihat Detail</span></li>
-                                                <li><a href="<?=base_url('files/').$data['info_pasien'].'.pdf'?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
-                                                    <i class="bi bi-file-earmark-fill text-secondary"></i>
-                                                        Cetak Informasi Pasien</span></a></li>
+                                                <li><a href="<?= base_url('files/') . $data['info_pasien'] . '.pdf' ?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
+                                                            <i class="bi bi-file-earmark-fill text-secondary"></i>
+                                                            Cetak Informasi Pasien</span></a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -88,7 +88,7 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
     </div>
-<?php include('../../view/template/footer.php');
+<?php require_once('../../view/template/footer.php');
 } else {
     header('location: ' . base_url('login'));
 } ?>

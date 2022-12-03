@@ -1,9 +1,9 @@
 <?php
-include('../../config/config.php');
+require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Dashboard';
     $pageheading = 'Dashboard';
-    include('../../view/template/header.php');
+    require_once('../../view/template/header.php');
     $queryHari = mysqli_query($con, "SELECT DAY(created_at) FROM pasiens WHERE DAY(created_at) = DAYOFMONTH(NOW());");
     $hari = mysqli_num_rows($queryHari);
     $queryPasien = mysqli_query($con, "SELECT id_pasien FROM pasiens;");
@@ -97,7 +97,7 @@ if (isset($_SESSION['login']) == 'true') {
             <div class="col-6 col-lg-8 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <div>
+                        <div style="height: 300px;">
                             <canvas id="myBar"></canvas>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ if (isset($_SESSION['login']) == 'true') {
             <div class="col-6 col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <div>
+                        <div style="height: 300px;">
                             <canvas id="myPolar"></canvas>
                         </div>
                     </div>
@@ -158,7 +158,9 @@ if (isset($_SESSION['login']) == 'true') {
                             stepSize: 1
                         }
                     }
-                }
+                },
+                maintainAspectRatio: false,
+                responsive: true
             }
         });
         new Chart(polarCtx, {
@@ -175,11 +177,15 @@ if (isset($_SESSION['login']) == 'true') {
                     ],
                     hoverOffset: 4
                 }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true
             }
         });
     </script>
 <?php
-    include('../../view/template/footer.php');
+    require_once('../../view/template/footer.php');
 } else {
     header('location: ' . base_url('login'));
 }
