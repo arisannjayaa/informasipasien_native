@@ -110,7 +110,7 @@
                                     <li>
                                         <h6 class="dropdown-header">Halo, <?= ucfirst($_SESSION['username']) ?></h6>
                                     </li>
-                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> Profil Saya</a></li>
+                                    <li><a class="dropdown-item" href="<?= base_url('profil') ?>"><i class="icon-mid bi bi-person me-2"></i> Profil Saya</a></li>
                                     <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i> Pengaturan</a></li>
 
                                     <hr class="dropdown-divider">
