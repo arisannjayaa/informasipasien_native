@@ -14,10 +14,10 @@ if (isset($_SESSION['login']) == 'true') {
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-5">
+                        <div class="col-12 col-lg-7 col-md-3">
                             <table class="table table-borderless">
                                 <tr>
-                                    <td class="col-6">Username</td>
+                                    <td>Username</td>
                                 </tr>
                                 <tr>
                                     <td><input readonly type="text" class="form-control" id="username" value="<?= $data['username'] ?>"></td>
@@ -26,7 +26,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="col-6">Role</td>
+                                    <td>Role</td>
                                 </tr>
                                 <tr>
                                     <td><input readonly type="text" class="form-control" id="username" value="<?= $data['ROLE'] ?>"></td>
@@ -69,13 +69,8 @@ if (isset($_SESSION['login']) == 'true') {
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Keluar</span>
-                        </button>
                         <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Update</span>
+                            Update
                         </button>
                     </div>
                 </form>
@@ -103,14 +98,9 @@ if (isset($_SESSION['login']) == 'true') {
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Keluar</span>
-                        </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Update</span>
+                    <div class="modal-footer d-grid">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                            Update
                         </button>
                     </div>
                 </form>

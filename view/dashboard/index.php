@@ -35,12 +35,12 @@ if (isset($_SESSION['login']) == 'true') {
             <div class="card">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-6">
+                        <div class="col-12 col-lg-6 order-2 order-lg-1 col-md-6 order-md-1">
                             <h4>Selamat Datang <?= ucfirst($_SESSION['username']) ?></h4>
                             <p>Data Kesehatan Informasi Pasien adalah sistem yang berguna untuk mengelola registrasi dari
                                 pasien.</p>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-lg-6 order-1 order-lg-2 col-md-6 order-md-2 mb-5 mb-lg-0">
                             <img src="<?= base_url('public/assets/images/undraw_welcoming.svg') ?>" class="img-fluid" alt="" width="250">
                         </div>
                     </div>
@@ -49,7 +49,7 @@ if (isset($_SESSION['login']) == 'true') {
         </div>
     </div>
     <div class="row">
-        <div class="col-3 col-lg col-md-6">
+        <div class="col-12 col-lg-6 col-md-6">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
@@ -70,7 +70,7 @@ if (isset($_SESSION['login']) == 'true') {
                 </div>
             </div>
         </div>
-        <div class="col-3 col-lg col-md-6">
+        <div class="col-12 col-lg-6 col-md-6">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
@@ -92,23 +92,21 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
     </div>
-    <div class="d-grid">
-        <div class="row">
-            <div class="col-6 col-lg-8 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div style="height: 300px;">
-                            <canvas id="myBar"></canvas>
-                        </div>
+    <div class="row">
+        <div class="col-12 col-lg-8 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height: 300px;">
+                        <canvas id="myBar"></canvas>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-lg-4 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div style="height: 300px;">
-                            <canvas id="myPolar"></canvas>
-                        </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height: 300px;">
+                        <canvas id="myPolar"></canvas>
                     </div>
                 </div>
             </div>
