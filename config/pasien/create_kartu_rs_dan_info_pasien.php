@@ -1,7 +1,7 @@
 <?php
  
 // memanggil library php qrcode
-include "../../library/phpqrcode/qrlib.php";
+require_once "../../library/phpqrcode/qrlib.php";
 
 // nama folder tempat penyimpanan file qrcode
 $penyimpanan = "../../library/phpqrcode/temp/";
@@ -30,7 +30,7 @@ QRcode::png($isi, $penyimpanan."$info_pasien.png");
  
 
 // memanggil library FPDF
-include "../../library/fpdf/cellfit.php"; 
+require_once "../../library/fpdf/cellfit.php"; 
 
 
 //----------------------------------CREATE PDF KARTU RS----------------------------------------------------------------
@@ -95,6 +95,3 @@ $filename="../../files/$info_pasien.pdf";
 $pdf->Output($filename,'F');
 
 //-----------------------------------------------------------------------------------------------------------------------
- 
-
-?>

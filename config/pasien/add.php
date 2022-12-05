@@ -1,32 +1,32 @@
 <?php
-include('../config.php');
+require_once('../config.php');
 
 $x = 0;
 for ($x = 0; $x < 10; $x++) {
-        
-        $ee = rand();
-        $data = mysqli_query($con, "select * from pasiens where kartu_rs='$ee'");
-        $cek = mysqli_num_rows($data);
-        if($cek > 0){
-            $x= 1;
-        }else{
-            $x= 11;
-            $title_pdf1 = $ee;
-        }
+
+    $ee = rand();
+    $data = mysqli_query($con, "select * from pasiens where kartu_rs='$ee'");
+    $cek = mysqli_num_rows($data);
+    if ($cek > 0) {
+        $x = 1;
+    } else {
+        $x = 11;
+        $title_pdf1 = $ee;
+    }
 }
 
 $x = 0;
 for ($x = 0; $x < 10; $x++) {
-        
-        $ee = rand();
-        $data = mysqli_query($con, "select * from pasiens where info_pasien='$ee'");
-        $cek = mysqli_num_rows($data);
-        if($cek > 0){
-            $x= 1;
-        }else{
-            $x= 11;
-            $title_pdf2 = $ee;
-        }
+
+    $ee = rand();
+    $data = mysqli_query($con, "select * from pasiens where info_pasien='$ee'");
+    $cek = mysqli_num_rows($data);
+    if ($cek > 0) {
+        $x = 1;
+    } else {
+        $x = 11;
+        $title_pdf2 = $ee;
+    }
 }
 
 $nama               = $_POST['nama'];
@@ -47,19 +47,18 @@ $ktps = mysqli_fetch_assoc($queryktps);
 $pasien = mysqli_fetch_assoc($querycek);
 
 // die();
-if($pasien['nik'] == $nik) {
+if ($pasien['nik'] == $nik) {
     $_SESSION['gagal'] = 'Gagal menambahkan data pasien sudah ada';
-    header('location: '.base_url('pasien/add'));
-} elseif($ktps['nik'] != $nik){
+    header('location: ' . base_url('pasien/add'));
+} elseif ($ktps['nik'] != $nik) {
     $_SESSION['gagal'] = 'Gagal menambahkan data pasien';
-    header('location: '.base_url('pasien/add'));
-}else {
+    header('location: ' . base_url('pasien/add'));
+} else {
     $query = mysqli_query($con, "INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at, kartu_rs, info_pasien) VALUES ('$nama', '$nik', '$gol_darah', '$jenis_kelamin', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$created_at', '$updated_at', '$kartu_rs', '$info_pasien')");
-
 }
 // print_r($pasien); die();
 
-include('create_kartu_rs_dan_info_pasien.php');
+require_once('create_kartu_rs_dan_info_pasien.php');
 
 
 if ($query) {

@@ -1,9 +1,9 @@
 <?php
-include('../../config/config.php');
+require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Data Pasien';
     $pageheading = 'Data Pasien';
-    include('../../view/template/header.php');
+    require_once('../../view/template/header.php');
 ?>
     <?php
     if (isset($_SESSION['addsuccess'])) { ?>
@@ -37,58 +37,60 @@ if (isset($_SESSION['login']) == 'true') {
                         <a href="<?= base_url('pasien/add') ?>"><button type="button" class="btn btn-primary">Tambah
                                 Pasien</button></a>
                     </div>
-                    <table class="table" id="table1">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Gol. Darah</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $no = 1;
-                            $query = mysqli_query($con, "SELECT * FROM pasiens");
-                            while ($data = mysqli_fetch_assoc($query)) { ?>
+                    <div class="table-responsive">
+                        <table class="table" id="table1">
+                            <thead>
                                 <tr>
-                                    <td><?= $no++ ?></td>
-                                    <td><?= $data['nama'] ?></td>
-                                    <td><?= $data['alamat'] ?></td>
-                                    <td><?= $data['jenis_kelamin'] ?></td>
-                                    <td><?= $data['gol_darah'] ?></td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><span role="button" class="dropdown-item edit" data-id="<?= $data['id_pasien'] ?>"><i class="bi bi-pencil-fill text-primary"></i>
-                                                        Edit</span></li>
-                                                <li><span role="button" class="dropdown-item delete" data-id="<?= $data['id_pasien'] ?>" data-nama="<?= $data['nama'] ?>"><i class="bi bi-trash-fill text-danger"></i>
-                                                        Delete</span></li>
-                                                <li><a href="<?php echo "./../files/".$data['kartu_rs'].".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
-                                                        Kartu Pasien</span></li>
-                                                <li><span role="button" class="dropdown-item detail"><i class="bi bi-eye-fill"></i>
-                                                        Lihat Detail</span></li>
-                                                <li><a href="<?=base_url('files/').$data['info_pasien'].'.pdf'?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
-                                                    <i class="bi bi-file-earmark-fill text-secondary"></i>
-                                                        Cetak Informasi Pasien</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th class="d-none d-lg-table-cell">Alamat</th>
+                                    <th class="d-none d-lg-table-cell">Jenis Kelamin</th>
+                                    <th class="d-none d-lg-table-cell">Gol. Darah</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 1;
+                                $query = mysqli_query($con, "SELECT * FROM pasiens ORDER BY id_pasien ASC");
+                                while ($data = mysqli_fetch_assoc($query)) { ?>
+                                    <tr>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= $data['nama'] ?></td>
+                                        <td class="d-none d-lg-table-cell"><?= $data['alamat'] ?></td>
+                                        <td class="d-none d-lg-table-cell"><?= $data['jenis_kelamin'] ?></td>
+                                        <td class="d-none d-lg-table-cell"><?= $data['gol_darah'] ?></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><span role="button" class="dropdown-item edit" data-id="<?= $data['id_pasien'] ?>"><i class="bi bi-pencil-fill text-primary"></i>
+                                                            Edit</span></li>
+                                                    <li><span role="button" class="dropdown-item delete" data-id="<?= $data['id_pasien'] ?>" data-nama="<?= $data['nama'] ?>"><i class="bi bi-trash-fill text-danger"></i>
+                                                            Delete</span></li>
+                                                    <li><a href="<?php echo "./../files/" . $data['kartu_rs'] . ".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
+                                                                Kartu Pasien</span></li>
+                                                    <li><span role="button" class="dropdown-item detail"><i class="bi bi-eye-fill"></i>
+                                                            Lihat Detail</span></li>
+                                                    <li><a href="<?= base_url('files/') . $data['info_pasien'] . '.pdf' ?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
+                                                                <i class="bi bi-file-earmark-fill text-secondary"></i>
+                                                                Cetak Informasi Pasien</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-<?php include('../../view/template/footer.php');
+<?php require_once('../../view/template/footer.php');
 } else {
     header('location: ' . base_url('login'));
 } ?>

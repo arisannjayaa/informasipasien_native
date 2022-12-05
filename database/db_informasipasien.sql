@@ -1,4 +1,4 @@
-`db_informasipasien_native`CREATE DATABASE db_informasipasien_native;
+CREATE DATABASE db_informasipasien_native;
 
 USE db_informasipasien_native;
 
@@ -38,16 +38,16 @@ CREATE TABLE pasiens(
 	tempat_lahir VARCHAR(60) NOT NULL,
 	tanggal_lahir DATE NOT NULL,
 	alamat VARCHAR(100) NOT NULL,
-	created_at TIMESTAMP NOT NULL,
+    kartu_rs VARCHAR(50),
+    info_pasien VARCHAR(50),
+    no_telp VARCHAR(20),
+    email VARCHAR(50),
+    created_at TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP NOT NULL,
-	kartu_rs VARCHAR(50),
-	info_pasien VARCHAR(50),
 	PRIMARY KEY (id_pasien)
 );
 
 SET SQL_MODE='ALLOW_INVALID_DATES';
-
-DROP TABLE pasiens;
 
 INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at) VALUES
 ('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-10-31', 'Nusa Dua', NOW(), NOW()),

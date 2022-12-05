@@ -1,9 +1,9 @@
 <?php
-include('../../config/config.php');
+require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Laporan';
     $pageheading = 'Data Laporan';
-    include('../../view/template/header.php');
+    require_once('../../view/template/header.php');
 ?>
     <div class="row">
         <div class="col-12">
@@ -23,7 +23,7 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
     </div>
-<?php include('../../view/template/footer.php');
+<?php require_once('../../view/template/footer.php');
 } else {
     header('location: ' . base_url('login'));
 }

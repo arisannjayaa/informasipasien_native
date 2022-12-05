@@ -1,9 +1,9 @@
 <?php
-include('../../config/config.php');
+require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Tambah Data Pasien';
     $pageheading = 'Tambah Data Pasien';
-    include('../../view/template/header.php');
+    require_once('../../view/template/header.php');
 ?>
     <form action="<?= base_url('config/pasien/add') ?>" method="post">
         <?php if (isset($_SESSION['gagal'])) { ?>
@@ -20,7 +20,7 @@ if (isset($_SESSION['login']) == 'true') {
                             <h5>Nomor Induk Kependudukan (NIK)</h5>
                             <div class="d-flex a">
 
-                                <div class="col-5 me-3">
+                                <div class="col me-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="nik" placeholder="No NIK" name="nik" required>
                                         <label for="nik">NIK</label>
@@ -56,13 +56,13 @@ if (isset($_SESSION['login']) == 'true') {
                                             <option value="" selected>Pilih jenis kelamin</option>
                                             <option value="Laki-laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
-                                            <option value="Lainnya">Lainnya</option>
                                         </select>
                                         <label for="jenis_kelamin">Jenis kelamin</label>
                                     </div>
                                     <div class="col form-floating">
                                         <select class="form-select" id="gol_darah" aria-label="Golongan darah" name="gol_darah">
                                             <option value="" selected>Pilih golongan darah</option>
+                                            <option value="-">-</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="AB">AB</option>
@@ -71,12 +71,41 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="gol_darah">Golongan darah</label>
                                     </div>
                                 </div>
-                                <div class="col form-floating">
-                                    <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"></textarea>
-                                    <label for="alamat">Alamat tinggal</label>
+                                <div class="d-flex mb-3">
+                                    <div class="col-3 form-floating me-3">
+                                        <select class="form-select" id="provinsi" aria-label="Jenis kelamin" name="provinsi">
+                                            <option value="" selected>Pilih Provinsi</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                            <option value="Lainnya">Lainnya</option>
+                                        </select>
+                                        <label for="provinsi">Provinsi</label>
+                                    </div>
+                                    <div class="col-3 form-floating me-3">
+                                        <select class="form-select" id="kabupaten" aria-label="Jenis kelamin" name="kabupaten">
+                                            <option value="" selected>Pilih Kabupaten/Kota</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                            <option value="Lainnya">Lainnya</option>
+                                        </select>
+                                        <label for="kabupaten">Kabupaten/Kota</label>
+                                    </div>
+                                    <div class="col form-floating">
+                                        <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"></textarea>
+                                        <label for="alamat">Alamat tinggal</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <div class="col form-floating me-3">
+                                        <input type="text" class="form-control" id="no_telp" placeholder="Tempat lahir" name="no_telp">
+                                        <label for="no_telp">No Telepon/Hp</label>
+                                    </div>
+                                    <div class="col form-floating me-3">
+                                        <input type="text" class="form-control" id="email" placeholder="Tempat lahir" name="email">
+                                        <label for="email">Email</label>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                         <hr>
                         <div class="row">
@@ -90,7 +119,7 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
     </form>
-<?php include('../../view/template/footer.php');
+<?php require_once('../../view/template/footer.php');
     unset($_SESSION['gagal']);
 } else {
     header('location: ' . base_url('login'));

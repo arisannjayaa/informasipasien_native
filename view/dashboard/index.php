@@ -1,9 +1,9 @@
 <?php
-include('../../config/config.php');
+require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Dashboard';
     $pageheading = 'Dashboard';
-    include('../../view/template/header.php');
+    require_once('../../view/template/header.php');
     $queryHari = mysqli_query($con, "SELECT DAY(created_at) FROM pasiens WHERE DAY(created_at) = DAYOFMONTH(NOW());");
     $hari = mysqli_num_rows($queryHari);
     $queryPasien = mysqli_query($con, "SELECT id_pasien FROM pasiens;");
@@ -35,12 +35,12 @@ if (isset($_SESSION['login']) == 'true') {
             <div class="card">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-6">
+                        <div class="col-12 col-lg-6 order-2 order-lg-1 col-md-6 order-md-1">
                             <h4>Selamat Datang <?= ucfirst($_SESSION['username']) ?></h4>
                             <p>Data Kesehatan Informasi Pasien adalah sistem yang berguna untuk mengelola registrasi dari
                                 pasien.</p>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-lg-6 order-1 order-lg-2 col-md-6 order-md-2 mb-5 mb-lg-0">
                             <img src="<?= base_url('public/assets/images/undraw_welcoming.svg') ?>" class="img-fluid" alt="" width="250">
                         </div>
                     </div>
@@ -49,7 +49,7 @@ if (isset($_SESSION['login']) == 'true') {
         </div>
     </div>
     <div class="row">
-        <div class="col-3 col-lg col-md-6">
+        <div class="col-12 col-lg-6 col-md-6">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
@@ -70,7 +70,7 @@ if (isset($_SESSION['login']) == 'true') {
                 </div>
             </div>
         </div>
-        <div class="col-3 col-lg col-md-6">
+        <div class="col-12 col-lg-6 col-md-6">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
@@ -92,23 +92,21 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
     </div>
-    <div class="d-grid">
-        <div class="row">
-            <div class="col-6 col-lg-8 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div>
-                            <canvas id="myBar"></canvas>
-                        </div>
+    <div class="row">
+        <div class="col-12 col-lg-8 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height: 300px;">
+                        <canvas id="myBar"></canvas>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-lg-4 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div>
-                            <canvas id="myPolar"></canvas>
-                        </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height: 300px;">
+                        <canvas id="myPolar"></canvas>
                     </div>
                 </div>
             </div>
@@ -158,7 +156,9 @@ if (isset($_SESSION['login']) == 'true') {
                             stepSize: 1
                         }
                     }
-                }
+                },
+                maintainAspectRatio: false,
+                responsive: true
             }
         });
         new Chart(polarCtx, {
@@ -175,11 +175,15 @@ if (isset($_SESSION['login']) == 'true') {
                     ],
                     hoverOffset: 4
                 }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true
             }
         });
     </script>
 <?php
-    include('../../view/template/footer.php');
+    require_once('../../view/template/footer.php');
 } else {
     header('location: ' . base_url('login'));
 }
