@@ -3,6 +3,7 @@ require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Edit Data Pasien';
     $pageheading = 'Edit Data Pasien';
+    $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY id_provinsi");
     require_once('../../view/template/header.php');
 ?>
     <form action="<?= base_url('config/pasien/update') ?>" method="post">
@@ -26,8 +27,8 @@ if (isset($_SESSION['login']) == 'true') {
                                         <input type="text" class="form-control" id="nama" placeholder="Nama lengkap" value="<?= $data['nama'] ?>" name="nama">
                                         <label for="nama">Nama lengkap</label>
                                     </div>
-                                    <div class="d-flex mb-3">
-                                        <div class="col-7 form-floating me-3">
+                                    <div class="d-flex mb-3 gap-3">
+                                        <div class="col-7 form-floating">
                                             <input type="text" class="form-control" id="tempat_lahir" placeholder="Tempat lahir" value="<?= $data['tempat_lahir'] ?>" name="tempat_lahir">
                                             <label for="tempat_lahir">Tempat lahir</label>
                                         </div>
@@ -36,8 +37,8 @@ if (isset($_SESSION['login']) == 'true') {
                                             <label for="tanggal_lahir">Tanggal lahir</label>
                                         </div>
                                     </div>
-                                    <div class="d-flex mb-3">
-                                        <div class="col-9 form-floating me-3">
+                                    <div class="d-flex mb-3 gap-3">
+                                        <div class="col-9 form-floating">
                                             <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
                                                 <option value="">Pilih jenis kelamin</option>
                                                 <option value="Laki-laki" <?= ($data['jenis_kelamin'] == 'Laki-laki') ? 'selected' : '' ?>>Laki-laki
@@ -52,6 +53,8 @@ if (isset($_SESSION['login']) == 'true') {
                                         <div class="col form-floating">
                                             <select class="form-select" id="gol_darah" aria-label="Golongan darah" value="" name="gol_darah">
                                                 <option value="">Pilih golongan darah</option>
+                                                <option value="-" <?= ($data['gol_darah'] == '-') ? 'selected' : '' ?>>-
+                                                </option>
                                                 <option value="A" <?= ($data['gol_darah'] == 'A') ? 'selected' : '' ?>>A
                                                 </option>
                                                 <option value="B" <?= ($data['gol_darah'] == 'B') ? 'selected' : '' ?>>B
@@ -64,9 +67,36 @@ if (isset($_SESSION['login']) == 'true') {
                                             <label for="gol_darah">Golongan darah</label>
                                         </div>
                                     </div>
-                                    <div class="col form-floating">
-                                        <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"><?= $data['alamat'] ?></textarea>
-                                        <label for="alamat">Alamat tinggal</label>
+                                    <div class="d-flex mb-3 gap-3">
+                                        <div class="col-3 form-floating">
+                                            <select class="form-select" id="provinsi" aria-label="Jenis kelamin" name="provinsi">
+                                                <option value="" selected>Pilih Provinsi</option>
+                                                <?php while ($dataProv = mysqli_fetch_assoc($queryProvinsi)) { ?>
+                                                    <option value="<?= $dataProv['id_provinsi'] ?>" <?= ($data['id_provinsi'] == $dataProv['id_provinsi']) ? 'selected' : '' ?>><?= $dataProv['nama_provinsi'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <label for="provinsi">Provinsi</label>
+                                        </div>
+                                        <div class="col-3 form-floating">
+                                            <select class="form-select" id="kabupaten" aria-label="Jenis kelamin" name="kabupaten">
+                                                <option value="" selected>Pilih Kabupaten/Kota</option>
+                                            </select>
+                                            <label for="kabupaten">Kabupaten/Kota</label>
+                                        </div>
+                                        <div class="col form-floating">
+                                            <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"><?= $data['alamat'] ?></textarea>
+                                            <label for="alamat">Alamat tinggal</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mb-3 gap-3">
+                                        <div class="col form-floating">
+                                            <input type="text" class="form-control" id="no_telp" placeholder="Tempat lahir" name="no_telp" value="<?= $data['no_telp'] ?>">
+                                            <label for="no_telp">No Telepon/Hp</label>
+                                        </div>
+                                        <div class="col form-floating">
+                                            <input type="text" class="form-control" id="email" placeholder="Tempat lahir" name="email" value="<?= $data['email'] ?>">
+                                            <label for="email">Email</label>
+                                        </div>
                                     </div>
 
                                     <?php //-------------------------update katon-----------------------------------
@@ -100,3 +130,15 @@ if (isset($_SESSION['login']) == 'true') {
     header('location: ' . base_url('login'));
 }
 ?>
+<script>
+    $("#provinsi").change(function() {
+        var id_prov = $(this).val();
+        $.ajax({
+            url: "<?= base_url('config/wilayah/wilayah.php') ?>",
+            data: "id_provinsi=" + id_prov,
+            success: function(msg) {
+                $("#kabupaten").html(msg)
+            }
+        });
+    });
+</script>

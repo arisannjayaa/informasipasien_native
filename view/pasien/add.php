@@ -3,6 +3,7 @@ require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Tambah Data Pasien';
     $pageheading = 'Tambah Data Pasien';
+    $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY id_provinsi");
     require_once('../../view/template/header.php');
 ?>
     <form action="<?= base_url('config/pasien/add') ?>" method="post">
@@ -18,16 +19,13 @@ if (isset($_SESSION['login']) == 'true') {
                     <div class="card-body">
                         <div class="row mb-4">
                             <h5>Nomor Induk Kependudukan (NIK)</h5>
-                            <div class="d-flex a">
+                            <div class="d-flex gap-3">
 
-                                <div class="col me-3">
+                                <div class="col">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="nik" placeholder="No NIK" name="nik" required>
                                         <label for="nik">NIK</label>
                                     </div>
-                                </div>
-                                <div class="col-1 d-grid">
-                                    <button id="getktp" class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
                                 </div>
                             </div>
                             <div id="pesannik"></div>
@@ -40,8 +38,8 @@ if (isset($_SESSION['login']) == 'true') {
                                     <input type="text" class="form-control" id="nama" placeholder="Nama lengkap" name="nama">
                                     <label for="nama">Nama lengkap</label>
                                 </div>
-                                <div class="d-flex mb-3">
-                                    <div class="col-7 form-floating me-3">
+                                <div class="d-flex mb-3 gap-3">
+                                    <div class="col-7 form-floating">
                                         <input type="text" class="form-control" id="tempat_lahir" placeholder="Tempat lahir" name="tempat_lahir">
                                         <label for="tempat_lahir">Tempat lahir</label>
                                     </div>
@@ -50,8 +48,8 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="tanggal_lahir">Tanggal lahir</label>
                                     </div>
                                 </div>
-                                <div class="d-flex mb-3">
-                                    <div class="col-9 form-floating me-3">
+                                <div class="d-flex mb-3 gap-3">
+                                    <div class="col-9 form-floating">
                                         <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
                                             <option value="" selected>Pilih jenis kelamin</option>
                                             <option value="Laki-laki">Laki-laki</option>
@@ -71,22 +69,19 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="gol_darah">Golongan darah</label>
                                     </div>
                                 </div>
-                                <div class="d-flex mb-3">
-                                    <div class="col-3 form-floating me-3">
+                                <div class="d-flex mb-3 gap-3">
+                                    <div class="col-3 form-floating">
                                         <select class="form-select" id="provinsi" aria-label="Jenis kelamin" name="provinsi">
                                             <option value="" selected>Pilih Provinsi</option>
-                                            <option value="Laki-laki">Laki-laki</option>
-                                            <option value="Perempuan">Perempuan</option>
-                                            <option value="Lainnya">Lainnya</option>
+                                            <?php while ($dataProv = mysqli_fetch_assoc($queryProvinsi)) { ?>
+                                                <option value="<?= $dataProv['id_provinsi'] ?>"><?= $dataProv['nama_provinsi'] ?></option>
+                                            <?php } ?>
                                         </select>
                                         <label for="provinsi">Provinsi</label>
                                     </div>
-                                    <div class="col-3 form-floating me-3">
+                                    <div class="col-3 form-floating">
                                         <select class="form-select" id="kabupaten" aria-label="Jenis kelamin" name="kabupaten">
-                                            <option value="" selected>Pilih Kabupaten/Kota</option>
-                                            <option value="Laki-laki">Laki-laki</option>
-                                            <option value="Perempuan">Perempuan</option>
-                                            <option value="Lainnya">Lainnya</option>
+                                            <option value="" selected>Pilih Kabupaten</option>
                                         </select>
                                         <label for="kabupaten">Kabupaten/Kota</label>
                                     </div>
@@ -95,12 +90,12 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="alamat">Alamat tinggal</label>
                                     </div>
                                 </div>
-                                <div class="d-flex mb-3">
-                                    <div class="col form-floating me-3">
+                                <div class="d-flex mb-3 gap-3">
+                                    <div class="col form-floating">
                                         <input type="text" class="form-control" id="no_telp" placeholder="Tempat lahir" name="no_telp">
                                         <label for="no_telp">No Telepon/Hp</label>
                                     </div>
-                                    <div class="col form-floating me-3">
+                                    <div class="col form-floating">
                                         <input type="text" class="form-control" id="email" placeholder="Tempat lahir" name="email">
                                         <label for="email">Email</label>
                                     </div>
@@ -126,6 +121,17 @@ if (isset($_SESSION['login']) == 'true') {
 }
 ?>
 <script type="text/javascript">
+    $("#provinsi").change(function() {
+        var id_prov = $(this).val();
+        $.ajax({
+            url: "<?= base_url('config/wilayah/wilayah.php') ?>",
+            data: "id_provinsi=" + id_prov,
+            success: function(data) {
+                $("#kabupaten").html(data)
+            }
+        });
+    });
+
     $('#getktp').click(function() {
         var nik = $("#nik").val();
         $.ajax({
@@ -133,7 +139,6 @@ if (isset($_SESSION['login']) == 'true') {
             data: "nik=" + nik,
             success: function(data) {
                 obj = JSON.parse(data);
-                console.log(obj);
                 if (jQuery.isEmptyObject(obj)) {
                     $("#pesannik").addClass("text-danger mt-1")
                     $("#pesannik").html("<small>Data NIK Dari Pasien Tidak Tersedia</small>");
