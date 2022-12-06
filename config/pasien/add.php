@@ -36,6 +36,10 @@ $gol_darah          = $_POST['gol_darah'];
 $tempat_lahir       = $_POST['tempat_lahir'];
 $tanggal_lahir      = $_POST['tanggal_lahir'];
 $alamat             = $_POST['alamat'];
+$provinsi           = $_POST['provinsi'];
+$kabupaten          = $_POST['kabupaten'];
+$no_telp            = $_POST['no_telp'];
+$email              = $_POST['email'];
 $created_at         = date('Y-m-d H:i:s');
 $updated_at         = date('Y-m-d H:i:s');
 $kartu_rs           = $title_pdf1;
@@ -50,11 +54,8 @@ $pasien = mysqli_fetch_assoc($querycek);
 if ($pasien['nik'] == $nik) {
     $_SESSION['gagal'] = 'Gagal menambahkan data pasien sudah ada';
     header('location: ' . base_url('pasien/add'));
-} elseif ($ktps['nik'] != $nik) {
-    $_SESSION['gagal'] = 'Gagal menambahkan data pasien';
-    header('location: ' . base_url('pasien/add'));
 } else {
-    $query = mysqli_query($con, "INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at, kartu_rs, info_pasien) VALUES ('$nama', '$nik', '$gol_darah', '$jenis_kelamin', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$created_at', '$updated_at', '$kartu_rs', '$info_pasien')");
+    $query = mysqli_query($con, "INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at, kartu_rs, info_pasien, id_provinsi, id_kabupaten, no_telp, email) VALUES ('$nama', '$nik', '$gol_darah', '$jenis_kelamin', '$tempat_lahir', '$tanggal_lahir', '$alamat', '$created_at', '$updated_at', '$kartu_rs', '$info_pasien', '$provinsi', '$kabupaten', '$no_telp', '$email')");
 }
 // print_r($pasien); die();
 

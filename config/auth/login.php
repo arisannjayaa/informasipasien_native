@@ -7,7 +7,7 @@ $data = mysqli_fetch_assoc($query);
 if ($data['username'] and SHA1($data['password'])) {
     $_SESSION['id_user']  = $data['id_login'];
     $_SESSION['username'] = $data['username'];
-    $_SESSION['role']     = $data['ROLE'];
+    $_SESSION['role']     = $data['role'];
     $_SESSION['login']    = 'true';
     header('location: ' . base_url('dashboard'));
 } else {

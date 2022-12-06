@@ -29,7 +29,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     <td>Role</td>
                                 </tr>
                                 <tr>
-                                    <td><input readonly type="text" class="form-control" id="username" value="<?= $data['ROLE'] ?>"></td>
+                                    <td><input readonly type="text" class="form-control" id="username" value="<?= $data['role'] ?>"></td>
                                 </tr>
                             </table>
                         </div>

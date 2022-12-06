@@ -52,7 +52,7 @@ if (isset($_SESSION['login']) == 'true') {
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $query = mysqli_query($con, "SELECT * FROM pasiens ORDER BY id_pasien ASC");
+                                $query = mysqli_query($con, "SELECT * FROM pasiens ORDER BY updated_at DESC");
                                 while ($data = mysqli_fetch_assoc($query)) { ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
