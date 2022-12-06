@@ -1,9 +1,12 @@
 <?php
 require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
+    $id = $_GET['id'];
     $title = 'Edit Data Pasien';
     $pageheading = 'Edit Data Pasien';
     $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY id_provinsi");
+    $queryPasien = mysqli_query($con, "SELECT id_pasien, id_kabupaten FROM pasiens WHERE id_pasien = '$id'");
+    $data = mysqli_fetch_assoc($queryPasien);
     require_once('../../view/template/header.php');
 ?>
     <form action="<?= base_url('config/pasien/update') ?>" method="post">
@@ -12,106 +15,98 @@ if (isset($_SESSION['login']) == 'true') {
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <div class="row">
-                            <?php
-                            $id = $_GET['id'];
-                            $query = mysqli_query($con, "SELECT * FROM pasiens WHERE id_pasien='$id'");
-                            while ($data = mysqli_fetch_assoc($query)) { ?>
-                                <input type="text" value="<?= $data['id_pasien'] ?>" name="id" hidden>
-                                <div class="col">
-                                    <h5>Data Diri Pasien</h5>
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="nik" placeholder="Nama lengkap" value="<?= $data['nik'] ?>" name="nik">
-                                        <label for="nik">NIK</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="nama" placeholder="Nama lengkap" value="<?= $data['nama'] ?>" name="nama">
-                                        <label for="nama">Nama lengkap</label>
-                                    </div>
-                                    <div class="d-flex mb-3 gap-3">
-                                        <div class="col-7 form-floating">
-                                            <input type="text" class="form-control" id="tempat_lahir" placeholder="Tempat lahir" value="<?= $data['tempat_lahir'] ?>" name="tempat_lahir">
-                                            <label for="tempat_lahir">Tempat lahir</label>
-                                        </div>
-                                        <div class="col form-floating">
-                                            <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal lahir" value="<?= $data['tanggal_lahir'] ?>" name="tanggal_lahir">
-                                            <label for="tanggal_lahir">Tanggal lahir</label>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mb-3 gap-3">
-                                        <div class="col-9 form-floating">
-                                            <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
-                                                <option value="">Pilih jenis kelamin</option>
-                                                <option value="Laki-laki" <?= ($data['jenis_kelamin'] == 'Laki-laki') ? 'selected' : '' ?>>Laki-laki
-                                                </option>
-                                                <option value="Perempuan" <?= ($data['jenis_kelamin'] == 'Perempuan') ? 'selected' : '' ?>>Perempuan
-                                                </option>
-                                                <option value="Lainnya" <?= ($data['jenis_kelamin'] == 'Lainnya') ? 'selected' : '' ?>>Lainnya
-                                                </option>
-                                            </select>
-                                            <label for="jenis_kelamin">Jenis kelamin</label>
-                                        </div>
-                                        <div class="col form-floating">
-                                            <select class="form-select" id="gol_darah" aria-label="Golongan darah" value="" name="gol_darah">
-                                                <option value="">Pilih golongan darah</option>
-                                                <option value="-" <?= ($data['gol_darah'] == '-') ? 'selected' : '' ?>>-
-                                                </option>
-                                                <option value="A" <?= ($data['gol_darah'] == 'A') ? 'selected' : '' ?>>A
-                                                </option>
-                                                <option value="B" <?= ($data['gol_darah'] == 'B') ? 'selected' : '' ?>>B
-                                                </option>
-                                                <option value="AB" <?= ($data['gol_darah'] == 'AB') ? 'selected' : '' ?>>AB
-                                                </option>
-                                                <option value="O" <?= ($data['gol_darah'] == 'O') ? 'selected' : '' ?>>O
-                                                </option>
-                                            </select>
-                                            <label for="gol_darah">Golongan darah</label>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mb-3 gap-3">
-                                        <div class="col-3 form-floating">
-                                            <select class="form-select" id="provinsi" aria-label="Jenis kelamin" name="provinsi">
-                                                <option value="" selected>Pilih Provinsi</option>
-                                                <?php while ($dataProv = mysqli_fetch_assoc($queryProvinsi)) { ?>
-                                                    <option value="<?= $dataProv['id_provinsi'] ?>" <?= ($data['id_provinsi'] == $dataProv['id_provinsi']) ? 'selected' : '' ?>><?= $dataProv['nama_provinsi'] ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <label for="provinsi">Provinsi</label>
-                                        </div>
-                                        <div class="col-3 form-floating">
-                                            <select class="form-select" id="kabupaten" aria-label="Jenis kelamin" name="kabupaten">
-                                                <option value="" selected>Pilih Kabupaten/Kota</option>
-                                            </select>
-                                            <label for="kabupaten">Kabupaten/Kota</label>
-                                        </div>
-                                        <div class="col form-floating">
-                                            <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"><?= $data['alamat'] ?></textarea>
-                                            <label for="alamat">Alamat tinggal</label>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mb-3 gap-3">
-                                        <div class="col form-floating">
-                                            <input type="text" class="form-control" id="no_telp" placeholder="Tempat lahir" name="no_telp" value="<?= $data['no_telp'] ?>">
-                                            <label for="no_telp">No Telepon/Hp</label>
-                                        </div>
-                                        <div class="col form-floating">
-                                            <input type="text" class="form-control" id="email" placeholder="Tempat lahir" name="email" value="<?= $data['email'] ?>">
-                                            <label for="email">Email</label>
-                                        </div>
-                                    </div>
-
-                                    <?php //-------------------------update katon-----------------------------------
-                                    ?>
-
-                                    <div class="col form-floating">
-                                        <textarea type="text" class="form-control" id="kartu_rs" placeholder="Kartu RS" name="kartu_rs" hidden><?= $data['kartu_rs'] ?></textarea>
+                            <input type="text" name="id" hidden value="<?= $data['id_pasien'] ?>">
+                            <div class="col">
+                                <h5>Data Diri Pasien</h5>
+                                <div class="form-floating mb-3">
+                                    <input readonly type="text" class="form-control" id="nik" placeholder="NIK" name="nik">
+                                    <label for="nik">NIK</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="nama" placeholder="Nama lengkap" name="nama">
+                                    <label for="nama">Nama lengkap</label>
+                                </div>
+                                <div class="d-flex mb-3 gap-3">
+                                    <div class="col-7 form-floating">
+                                        <input type="text" class="form-control" id="tempat_lahir" placeholder="Tempat lahir" name="tempat_lahir">
+                                        <label for="tempat_lahir">Tempat lahir</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <textarea type="text" class="form-control" id="info_pasien" placeholder="Kartu Informasi pasien" name="info_pasien" hidden><?= $data['info_pasien'] ?></textarea>
+                                        <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal lahir" name="tanggal_lahir">
+                                        <label for="tanggal_lahir">Tanggal lahir</label>
                                     </div>
                                 </div>
-                            <?php
-                            }
-                            ?>
+                                <div class="d-flex mb-3 gap-3">
+                                    <div class="col-9 form-floating">
+                                        <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
+                                            <option value="">Pilih jenis kelamin</option>
+                                            <option value="Laki-laki">Laki-laki
+                                            </option>
+                                            <option value="Perempuan">Perempuan
+                                            </option>
+                                            <option value="Lainnya">Lainnya
+                                            </option>
+                                        </select>
+                                        <label for="jenis_kelamin">Jenis kelamin</label>
+                                    </div>
+                                    <div class="col form-floating">
+                                        <select class="form-select" id="gol_darah" aria-label="Golongan darah" value="" name="gol_darah">
+                                            <option value="">Pilih golongan darah</option>
+                                            <option value="-">-</option>
+                                            <option value="A">A
+                                            </option>
+                                            <option value="B">B
+                                            </option>
+                                            <option value="AB">AB
+                                            </option>
+                                            <option value="O">O
+                                            </option>
+                                        </select>
+                                        <label for="gol_darah">Golongan darah</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3 gap-3">
+                                    <div class="col-3 form-floating">
+                                        <select class="form-select" id="provinsi" aria-label="Jenis kelamin" name="provinsi">
+                                            <option value="" selected>Pilih Provinsi</option>
+                                            <?php while ($dataProv = mysqli_fetch_assoc($queryProvinsi)) { ?>
+                                                <option value="<?= $dataProv['id_provinsi'] ?>"><?= $dataProv['nama_provinsi'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <label for="provinsi">Provinsi</label>
+                                    </div>
+                                    <div class="col-3 form-floating">
+                                        <select class="form-select" id="kabupaten" aria-label="Jenis kelamin" name="kabupaten">
+                                            <option value="" selected>Pilih Kabupaten/Kota</option>
+                                        </select>
+                                        <label for="kabupaten">Kabupaten/Kota</label>
+                                    </div>
+                                    <div class="col form-floating">
+                                        <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"></textarea>
+                                        <label for="alamat">Alamat tinggal</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3 gap-3">
+                                    <div class="col form-floating">
+                                        <input type="text" class="form-control" id="no_telp" placeholder="Tempat lahir" name="no_telp">
+                                        <label for="no_telp">No Telepon/Hp</label>
+                                    </div>
+                                    <div class="col form-floating">
+                                        <input type="text" class="form-control" id="email" placeholder="Tempat lahir" name="email">
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+
+                                <?php //-------------------------update katon-----------------------------------
+                                ?>
+
+                                <div class="col form-floating">
+                                    <textarea type="text" class="form-control" id="kartu_rs" placeholder="Kartu RS" name="kartu_rs" hidden></textarea>
+                                </div>
+                                <div class="col form-floating">
+                                    <textarea type="text" class="form-control" id="info_pasien" placeholder="Kartu Informasi pasien" name="info_pasien" hidden></textarea>
+                                </div>
+                            </div>
                         </div>
                         <hr>
                         <div class="row">
@@ -133,12 +128,41 @@ if (isset($_SESSION['login']) == 'true') {
 <script>
     $("#provinsi").change(function() {
         var id_prov = $(this).val();
+        var id_kab = "<?= $data['id_kabupaten'] ?>"
         $.ajax({
+            type: "POST",
             url: "<?= base_url('config/wilayah/wilayah.php') ?>",
-            data: "id_provinsi=" + id_prov,
-            success: function(msg) {
-                $("#kabupaten").html(msg)
+            data: {
+                id_provinsi: id_prov,
+                id_kabupaten: id_kab
+            },
+            success: function(response) {
+                $("#kabupaten").html(response)
             }
         });
     });
+
+    var idPasien = "<?= $_GET['id'] ?>";
+    $.ajax({
+        type: "GET",
+        url: "<?= base_url('config/pasien/get.php') ?>",
+        data: "id_pasien=" + idPasien,
+        dataType: "JSON",
+        success: function(response) {
+            console.log(response);
+            $('[name="nik"]').val(response.nik);
+            $('[name="nama"]').val(response.nama);
+            $('[name="tempat_lahir"]').val(response.tempat_lahir);
+            $('[name="tanggal_lahir"]').val(response.tanggal_lahir);
+            $('[name="jenis_kelamin"]').val(response.jenis_kelamin);
+            $('[name="gol_darah"]').val(response.gol_darah);
+            $('[name="no_telp"]').val(response.no_telp);
+            $('[name="email"]').val(response.email);
+            $('[name="alamat"]').val(response.alamat);
+            $('[name="kartu_rs"]').val(response.kartu_rs);
+            $('[name="info_pasien"]').val(response.info_pasien);
+            $('[name="provinsi"]').val(response.id_provinsi).trigger('change');
+            $('[name="kabupaten"]').val(response.id_kabupaten).trigger('change');
+        }
+    })
 </script>

@@ -124,15 +124,18 @@ if (isset($_SESSION['login']) == 'true') {
     $("#provinsi").change(function() {
         var id_prov = $(this).val();
         $.ajax({
+            type: "POST",
             url: "<?= base_url('config/wilayah/wilayah.php') ?>",
-            data: "id_provinsi=" + id_prov,
-            success: function(data) {
-                $("#kabupaten").html(data)
+            data: {
+                id_provinsi: id_prov
+            },
+            success: function(response) {
+                $("#kabupaten").html(response)
             }
         });
     });
 
-    $('#getktp').click(function() {
+    $('#nik').keyup(function() {
         var nik = $("#nik").val();
         $.ajax({
             url: "<?= base_url('config/pasien/get.php') ?>",
