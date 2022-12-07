@@ -1,6 +1,8 @@
 <?php
 require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
+    // var_dump($_SESSION);
+    // die();
     $title = 'Profil';
     $pageheading = 'Profil';
     require_once('../../view/template/header.php');
@@ -8,6 +10,23 @@ if (isset($_SESSION['login']) == 'true') {
     $query = mysqli_query($con, "SELECT * FROM login WHERE id_login='$id' LIMIT 1");
     $data = mysqli_fetch_assoc($query);
 ?>
+    <?php
+    if (isset($_SESSION['update_success'])) { ?>
+        <div class="alert alert-success alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+            <?= $_SESSION['update_success'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['update_success']);
+    } elseif (isset($_SESSION['update_failed'])) { ?>
+        <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+            <?= $_SESSION['update_failed'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['update_failed']);
+    }
+    ?>
 
     <div class="row">
         <div class="col">
@@ -53,7 +72,7 @@ if (isset($_SESSION['login']) == 'true') {
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <form action="<?= base_url('updateprofil') ?>" method="post">
+                <form action="<?= base_url('config/profile/update') ?>" method="post">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
@@ -69,7 +88,7 @@ if (isset($_SESSION['login']) == 'true') {
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal" name="update_password">
                             Update
                         </button>
                     </div>
@@ -86,7 +105,7 @@ if (isset($_SESSION['login']) == 'true') {
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <form action="<?= base_url('updateprofil') ?>" method="post">
+                <form action="<?= base_url('config/profile/update') ?>" method="post">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
@@ -95,11 +114,15 @@ if (isset($_SESSION['login']) == 'true') {
                                     <label for="username" class="form-label">Username</label>
                                     <input name="user" type="text" class="form-control" id="username" value="<?= $data['username'] ?>">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="konfirmasi_password" class="form-label">Konfirmasi Password</label>
+                                    <input name="konfirmasi_password" type="password" class="form-control" id="konfirmasi_password">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer d-grid">
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="update_username">
                             Update
                         </button>
                     </div>

@@ -37,55 +37,54 @@ if (isset($_SESSION['login']) == 'true') {
                         <a href="<?= base_url('pasien/add') ?>"><button type="button" class="btn btn-primary">Tambah
                                 Pasien</button></a>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table" id="table1">
-                            <thead>
+
+                    <table class="table" id="table1">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th class="d-none d-lg-table-cell">Alamat</th>
+                                <th class="d-none d-lg-table-cell">Jenis Kelamin</th>
+                                <th class="d-none d-lg-table-cell">Gol. Darah</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            $query = mysqli_query($con, "SELECT * FROM pasiens ORDER BY updated_at DESC");
+                            while ($data = mysqli_fetch_assoc($query)) { ?>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th class="d-none d-lg-table-cell">Alamat</th>
-                                    <th class="d-none d-lg-table-cell">Jenis Kelamin</th>
-                                    <th class="d-none d-lg-table-cell">Gol. Darah</th>
-                                    <th>Aksi</th>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $data['nama'] ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= $data['alamat'] ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= $data['jenis_kelamin'] ?></td>
+                                    <td class="d-none d-lg-table-cell"><?= $data['gol_darah'] ?></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><span role="button" class="dropdown-item edit" data-id="<?= $data['id_pasien'] ?>"><i class="bi bi-pencil-fill text-primary"></i>
+                                                        Edit</span></li>
+                                                <li><span role="button" class="dropdown-item delete" data-id="<?= $data['id_pasien'] ?>" data-nama="<?= $data['nama'] ?>"><i class="bi bi-trash-fill text-danger"></i>
+                                                        Delete</span></li>
+                                                <li><a href="<?php echo "./../files/" . $data['kartu_rs'] . ".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
+                                                            Kartu Pasien</span></li>
+                                                <li><span role="button" class="dropdown-item detail"><i class="bi bi-eye-fill"></i>
+                                                        Lihat Detail</span></li>
+                                                <li><a href="<?= base_url('files/') . $data['info_pasien'] . '.pdf' ?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
+                                                            <i class="bi bi-file-earmark-fill text-secondary"></i>
+                                                            Cetak Informasi Pasien</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 1;
-                                $query = mysqli_query($con, "SELECT * FROM pasiens ORDER BY updated_at DESC");
-                                while ($data = mysqli_fetch_assoc($query)) { ?>
-                                    <tr>
-                                        <td><?= $no++ ?></td>
-                                        <td><?= $data['nama'] ?></td>
-                                        <td class="d-none d-lg-table-cell"><?= $data['alamat'] ?></td>
-                                        <td class="d-none d-lg-table-cell"><?= $data['jenis_kelamin'] ?></td>
-                                        <td class="d-none d-lg-table-cell"><?= $data['gol_darah'] ?></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><span role="button" class="dropdown-item edit" data-id="<?= $data['id_pasien'] ?>"><i class="bi bi-pencil-fill text-primary"></i>
-                                                            Edit</span></li>
-                                                    <li><span role="button" class="dropdown-item delete" data-id="<?= $data['id_pasien'] ?>" data-nama="<?= $data['nama'] ?>"><i class="bi bi-trash-fill text-danger"></i>
-                                                            Delete</span></li>
-                                                    <li><a href="<?php echo "./../files/" . $data['kartu_rs'] . ".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
-                                                                Kartu Pasien</span></li>
-                                                    <li><span role="button" class="dropdown-item detail"><i class="bi bi-eye-fill"></i>
-                                                            Lihat Detail</span></li>
-                                                    <li><a href="<?= base_url('files/') . $data['info_pasien'] . '.pdf' ?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
-                                                                <i class="bi bi-file-earmark-fill text-secondary"></i>
-                                                                Cetak Informasi Pasien</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

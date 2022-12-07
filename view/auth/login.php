@@ -1,6 +1,8 @@
 <?php
 include('../../config/config.php');
-if (!isset($_SESSION['login'])) { ?>
+if (!isset($_SESSION['login'])) {
+
+?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -19,16 +21,27 @@ if (!isset($_SESSION['login'])) { ?>
         <div class="container">
             <div class="row justify-content-center align-items-center" style="height: 100vh;">
                 <div class="col-lg-4 col-12">
+                    <?php
+                    if (isset($_SESSION['akunsalah'])) { ?>
+                        <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+                            <?= $_SESSION['akunsalah'] ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php
+                        unset($_SESSION['akunsalah']);
+                    } elseif (isset($_SESSION['update_success'])) { ?>
+                        <div class="alert alert-success alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+                            <?= $_SESSION['update_success'] ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php
+                        unset($_SESSION['update_success']);
+                    }
+                    ?>
                     <div class="card border border-2 border-primary">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <?php
-                                    if (isset($_SESSION['akunsalah'])) { ?>
-                                        <small class="text-danger"><?= $_SESSION['akunsalah'] ?></small>
-                                    <?php
-                                    }
-                                    ?>
                                     <h4>Login</h4>
                                     <p>Masukkan username dan password</p>
                                 </div>
@@ -57,9 +70,11 @@ if (!isset($_SESSION['login'])) { ?>
     </body>
 
     </html>
+
+    <script src="<?= base_url('public/assets/js/bootstrap.js') ?>"></script>
+    <script src="<?= base_url('public/assets/extensions/jquery/jquery.min.js') ?>"></script>
 <?php
 } else {
     header('location: ' . base_url('dashboard'));
 }
-unset($_SESSION['akunsalah']);
 ?>

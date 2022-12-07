@@ -655,6 +655,11 @@ FROM (SELECT TIMESTAMPDIFF(YEAR, tanggal_lahir, CURDATE()) AS umur FROM pasiens)
 GROUP BY labels
 ORDER BY labels;
 
+select * from pasiens 
+where date(created_at) between '2012-03-11' and '2012-05-11' 
+order by date(created_at) desc;
+
+
 
 
 
