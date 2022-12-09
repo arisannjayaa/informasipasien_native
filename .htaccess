@@ -8,6 +8,7 @@ RewriteRule ^pasien/add ./view/pasien/add.php
 RewriteRule ^pasien/edit ./view/pasien/edit.php
 RewriteRule ^profil ./view/profile/index.php
 RewriteRule ^updateprofil ./config/auth/update_profil_password.php
+RewriteRule ^pengaturan ./view/pengaturan/index.php
 # RewriteRule ^403 error/error?403
 # RewriteRule ^404 error/error.php?404
 # RewriteRule ^500 error/error.php?500

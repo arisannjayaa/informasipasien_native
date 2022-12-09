@@ -19,7 +19,7 @@ if (isset($_SESSION['login']) == 'true') {
                             <div class="col">
                                 <h5>Data Diri Pasien</h5>
                                 <div class="form-floating mb-3">
-                                    <input readonly type="text" class="form-control" id="nik" placeholder="NIK" name="nik">
+                                    <input disabled type="text" class="form-control" id="nik" placeholder="NIK" name="nik">
                                     <label for="nik">NIK</label>
                                 </div>
                                 <div class="form-floating mb-3">
