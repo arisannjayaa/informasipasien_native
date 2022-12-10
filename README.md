@@ -26,4 +26,7 @@ Data Kesehatan Informasi Pasien adalah sistem yang dibuat untuk memenuhi tugas a
     username : admin
     password : admin1234
 ```
-    
+
+
+## Template
+Mazer is created by Saugi.
