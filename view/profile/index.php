@@ -6,9 +6,6 @@ if (isset($_SESSION['login']) == 'true') {
     $title = 'Profil';
     $pageheading = 'Profil';
     require_once('../../view/template/header.php');
-    $id = $_SESSION['id_user'];
-    $query = mysqli_query($con, "SELECT * FROM login WHERE id_login='$id' LIMIT 1");
-    $data = mysqli_fetch_assoc($query);
 ?>
     <?php
     if (isset($_SESSION['update_success'])) { ?>
@@ -39,7 +36,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     <td>Username</td>
                                 </tr>
                                 <tr>
-                                    <td><input readonly type="text" class="form-control" id="username" value="<?= $data['username'] ?>"></td>
+                                    <td><input readonly type="text" class="form-control" id="username" value="<?= $_SESSION['username'] ?>"></td>
                                     <td>
                                         <button class="ms-2 btn text-primary" data-bs-toggle="modal" data-bs-target="#gantiusername">Ubah</button>
                                     </td>
@@ -48,7 +45,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     <td>Role</td>
                                 </tr>
                                 <tr>
-                                    <td><input readonly type="text" class="form-control" id="username" value="<?= $data['role'] ?>"></td>
+                                    <td><input readonly type="text" class="form-control" id="username" value="<?= $_SESSION['role'] ?>"></td>
                                 </tr>
                             </table>
                         </div>
@@ -112,7 +109,7 @@ if (isset($_SESSION['login']) == 'true') {
 
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
-                                    <input name="user" type="text" class="form-control" id="username" value="<?= $data['username'] ?>">
+                                    <input name="user" type="text" class="form-control" id="username" value="<?= $_SESSION['username'] ?>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="konfirmasi_password" class="form-label">Konfirmasi Password</label>

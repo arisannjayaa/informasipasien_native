@@ -20,11 +20,15 @@ if (isset($_SESSION['login']) == 'true') {
                         <div class="row mb-4">
                             <h5>Nomor Induk Kependudukan (NIK)</h5>
                             <div class="d-flex gap-3">
-
-                                <div class="col">
+                                <div class="col-11">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="nik" placeholder="No NIK" name="nik" required>
                                         <label for="nik">NIK</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="d-grid h-100">
+                                        <button id="findnik" type="button" class="btn btn-primary"><i class="bi bi-search"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +139,7 @@ if (isset($_SESSION['login']) == 'true') {
         });
     });
 
-    $('#nik').keyup(function() {
+    $('#findnik').click(function() {
         var nik = $("#nik").val();
         $.ajax({
             url: "<?= base_url('config/pasien/get.php') ?>",

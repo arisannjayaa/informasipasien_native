@@ -49,19 +49,22 @@ if (isset($_SESSION['login']) == 'true') {
 }
 ?>
 <script>
-    $('#cari').click(function() {
-        var dari = $('#dari').val();
-        var sampai = $('#sampai').val();
-        $.ajax({
-            type: "POST",
-            url: "<?= base_url('config/laporan/get.php') ?>",
-            data: {
-                tgl_dari: dari,
-                tgl_sampai: sampai,
-            },
-            success: function(response) {
-                $("#table").html(response)
-            }
-        })
-    })
+    $(document).ready(function() {
+        $('#cari').click(function() {
+            var dari = $('#dari').val();
+            var sampai = $('#sampai').val();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('config/laporan/get.php') ?>",
+                data: {
+                    tgl_dari: dari,
+                    tgl_sampai: sampai,
+                },
+                success: function(response) {
+                    $("#table").html(response)
+                    $('#table').dataTable();
+                }
+            });
+        });
+    });
 </script>

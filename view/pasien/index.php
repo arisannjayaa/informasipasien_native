@@ -14,7 +14,7 @@ if (isset($_SESSION['login']) == 'true') {
     <?php
         unset($_SESSION['addsuccess']);
     } elseif (isset($_SESSION['deletesuccess'])) { ?>
-        <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+        <div class="alert alert-success alert-dismissible show fade"><i class="bi bi-check-circle"></i>
             <?= $_SESSION['deletesuccess'] ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

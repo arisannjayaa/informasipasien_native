@@ -20,10 +20,10 @@ if (!isset($_SESSION['login'])) {
     <body>
         <div class="container">
             <div class="row justify-content-center align-items-center" style="height: 100vh;">
-                <div class="col-lg-4 col-12">
+                <div class="col-lg-4 col-12 col-xl-3">
                     <?php
                     if (isset($_SESSION['akunsalah'])) { ?>
-                        <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+                        <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-x"></i>
                             <?= $_SESSION['akunsalah'] ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>

@@ -61,7 +61,6 @@ if ($pasien['nik'] == $nik) {
 
 require_once('create_kartu_rs_dan_info_pasien.php');
 
-
 if ($query) {
     $_SESSION['addsuccess'] = 'Berhasil menambahkan data pasien';
     header("location: " . base_url("pasien/list"));
