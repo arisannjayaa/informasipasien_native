@@ -28,7 +28,6 @@ if (isset($_SESSION['login']) == 'true') {
     }
     $bar = json_encode($bars);
     $pie = json_encode($pies);
-
 ?>
     <div class="row">
         <div class="col">

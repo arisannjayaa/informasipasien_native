@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informasi Pasien | <?= $title ?></title>
 
+    <link rel="stylesheet" href="<?= base_url('public/assets/extensions/bootstrap-5.2.3/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/extensions/sweetalert2/sweetalert2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app-dark.css') ?>">
@@ -16,7 +17,6 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/datatables.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/shared/iconly.css') ?>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/css/bootstrap.min.css" />
 </head>
 
 <body>

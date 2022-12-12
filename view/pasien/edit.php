@@ -19,7 +19,7 @@ if (isset($_SESSION['login']) == 'true') {
                             <div class="col">
                                 <h5>Data Diri Pasien</h5>
                                 <div class="form-floating mb-3">
-                                    <input disabled type="text" class="form-control" id="nik" placeholder="NIK" name="nik">
+                                    <input disabled type="text" class="form-control" id="nik" placeholder="NIK">
                                     <label for="nik">NIK</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -96,16 +96,11 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="email">Email</label>
                                     </div>
                                 </div>
-
+                                <input type="hidden" class="form-control" id="kartu_rs" name="kartu_rs">
+                                <input type="hidden" class="form-control" id="info_pasien" name="info_pasien">
+                                <input type="hidden" class="form-control" id="nik" name="nik">
                                 <?php //-------------------------update katon-----------------------------------
                                 ?>
-
-                                <div class="col form-floating">
-                                    <textarea type="text" class="form-control" id="kartu_rs" placeholder="Kartu RS" name="kartu_rs" hidden></textarea>
-                                </div>
-                                <div class="col form-floating">
-                                    <textarea type="text" class="form-control" id="info_pasien" placeholder="Kartu Informasi pasien" name="info_pasien" hidden></textarea>
-                                </div>
                             </div>
                         </div>
                         <hr>
@@ -150,19 +145,20 @@ if (isset($_SESSION['login']) == 'true') {
         dataType: "JSON",
         success: function(response) {
             console.log(response);
+            $('#nik').val(response.nik);
             $('[name="nik"]').val(response.nik);
-            $('[name="nama"]').val(response.nama);
-            $('[name="tempat_lahir"]').val(response.tempat_lahir);
-            $('[name="tanggal_lahir"]').val(response.tanggal_lahir);
-            $('[name="jenis_kelamin"]').val(response.jenis_kelamin);
-            $('[name="gol_darah"]').val(response.gol_darah);
-            $('[name="no_telp"]').val(response.no_telp);
-            $('[name="email"]').val(response.email);
-            $('[name="alamat"]').val(response.alamat);
-            $('[name="kartu_rs"]').val(response.kartu_rs);
-            $('[name="info_pasien"]').val(response.info_pasien);
-            $('[name="provinsi"]').val(response.id_provinsi).trigger('change');
-            $('[name="kabupaten"]').val(response.id_kabupaten).trigger('change');
+            $('#nama').val(response.nama);
+            $('#tempat_lahir').val(response.tempat_lahir);
+            $('#tanggal_lahir').val(response.tanggal_lahir);
+            $('#jenis_kelamin').val(response.jenis_kelamin);
+            $('#gol_darah').val(response.gol_darah);
+            $('#no_telp').val(response.no_telp);
+            $('#email').val(response.email);
+            $('#alamat').val(response.alamat);
+            $('#kartu_rs').val(response.kartu_rs);
+            $('#info_pasien').val(response.info_pasien);
+            $('#provinsi').val(response.id_provinsi).trigger('change');
+            $('#kabupaten').val(response.id_kabupaten).trigger('change');
         }
     })
 </script>

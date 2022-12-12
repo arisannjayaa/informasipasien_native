@@ -29,17 +29,49 @@ if (isset($_SESSION['login']) == 'true') {
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-lg-7 col-md-3">
-                            <img width="200" src="<?= base_url('public/assets/images/logo/logo.jpg') ?>" alt="">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="d-flex gap-5 align-items-center">
+                                <div class="rounded-pill shadow-sm p-3">
+                                    <img width="200" src="<?= base_url('public/assets/images/logo/logo1.png') ?>" alt="">
+                                </div>
+                                <h1 class="mt-3">Rumah Sakit Bapakmu</h1>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="basicInput">Basic Input</label>
-                                <input readonly type="text" class="form-control" id="basicInput" placeholder="Enter email">
-                            </div>
+                        <div class="col-md-4">
+                            <label>Alamat</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <input class="form-control" readonly value="Jalan Bypass Ngurah Rai">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Provinsi</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <input class="form-control" readonly value="Bali">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Kabupaten</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <input class="form-control" readonly value="Badung">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Kecamatan</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <input class="form-control" readonly value="Mengwi">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <input class="form-control" readonly value="rsudmangusada@gmail.com">
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-start">
+                            <button type="submit" class="btn btn-primary me-1 mb-1">Edit Data</button>
                         </div>
                     </div>
                 </div>

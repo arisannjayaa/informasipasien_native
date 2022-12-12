@@ -30,24 +30,22 @@ if (isset($_SESSION['login']) == 'true') {
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-lg-7 col-md-3">
-                            <table class="table table-borderless">
-                                <tr>
-                                    <td>Username</td>
-                                </tr>
-                                <tr>
-                                    <td><input readonly type="text" class="form-control" id="username" value="<?= $_SESSION['username'] ?>"></td>
-                                    <td>
-                                        <button class="ms-2 btn text-primary" data-bs-toggle="modal" data-bs-target="#gantiusername">Ubah</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Role</td>
-                                </tr>
-                                <tr>
-                                    <td><input readonly type="text" class="form-control" id="username" value="<?= $_SESSION['role'] ?>"></td>
-                                </tr>
-                            </table>
+                        <div class="col-3">
+                            <label>Username</label>
+                        </div>
+                        <div class="col-7 form-group">
+                            <input readonly type="text" class="form-control" value="<?= $_SESSION['username'] ?>">
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#gantiusername">Ubah</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="">Role</label>
+                        </div>
+                        <div class="col-7">
+                            <input readonly type="text" class="form-control" id="username" value="<?= $_SESSION['role'] ?>">
                         </div>
                     </div>
                     <hr>

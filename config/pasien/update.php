@@ -1,8 +1,8 @@
 <?php
 require_once('../config.php');
 $id                 = $_POST['id'];
-$nama               = $_POST['nama'];
 $nik                = $_POST['nik'];
+$nama               = $_POST['nama'];
 $jenis_kelamin      = $_POST['jenis_kelamin'];
 $gol_darah          = $_POST['gol_darah'];
 $tempat_lahir       = $_POST['tempat_lahir'];
@@ -13,8 +13,15 @@ $email              = $_POST['email'];
 $provinsi           = $_POST['provinsi'];
 $kabupaten          = $_POST['kabupaten'];
 $updated_at         = date('Y-m-d H:i:s');
+$kartu_rs           = $_POST['kartu_rs'];
+$info_pasien        = $_POST['info_pasien'];
 
-$query = mysqli_query($con, "UPDATE pasiens SET nama='$nama', nik='$nik', jenis_kelamin='$jenis_kelamin', gol_darah='$gol_darah', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', no_telp='$no_telp',email='$email',  id_provinsi='$provinsi', id_kabupaten='$kabupaten', updated_at='$updated_at' WHERE id_pasien='$id'");
+// echo json_encode($_POST);
+// die();
+
+require_once('create_kartu_rs_dan_info_pasien.php');
+
+$query = mysqli_query($con, "UPDATE pasiens SET nama='$nama', jenis_kelamin='$jenis_kelamin', gol_darah='$gol_darah', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', no_telp='$no_telp',email='$email',  id_provinsi='$provinsi', id_kabupaten='$kabupaten', updated_at='$updated_at' WHERE id_pasien='$id'");
 
 
 require_once('create_kartu_rs_dan_info_pasien.php');

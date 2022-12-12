@@ -85,7 +85,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     </div>
                                     <div class="col-3 form-floating">
                                         <select class="form-select" id="kabupaten" aria-label="Jenis kelamin" name="kabupaten">
-                                            <option value="" selected>Pilih Kabupaten</option>
+                                            <option value="" selected>Pilih Kabupaten/Kota</option>
                                         </select>
                                         <label for="kabupaten">Kabupaten/Kota</label>
                                     </div>
