@@ -3,7 +3,7 @@ require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Tambah Data Pasien';
     $pageheading = 'Tambah Data Pasien';
-    $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY id_provinsi");
+    $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY nama_provinsi asc");
     require_once('../../view/template/header.php');
 ?>
     <form action="<?= base_url('config/pasien/add') ?>" method="post">
@@ -15,7 +15,7 @@ if (isset($_SESSION['login']) == 'true') {
         <?php }  ?>
         <div class="row">
             <div class="col">
-                <div class="card">
+                <div class="card border border-1 border-opacity-50">
                     <div class="card-body">
                         <div class="row mb-4">
                             <h5>Nomor Induk Kependudukan (NIK)</h5>

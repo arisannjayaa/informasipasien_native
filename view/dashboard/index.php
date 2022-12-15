@@ -31,7 +31,7 @@ if (isset($_SESSION['login']) == 'true') {
 ?>
     <div class="row">
         <div class="col">
-            <div class="card">
+            <div class="card border border-1 border-opacity-50">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-12 col-lg-6 order-2 order-lg-1 col-md-6 order-md-1">
@@ -49,7 +49,7 @@ if (isset($_SESSION['login']) == 'true') {
     </div>
     <div class="row">
         <div class="col-12 col-lg-6 col-md-6">
-            <div class="card">
+            <div class="card border border-1 border-opacity-50">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
                         <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
@@ -70,7 +70,7 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
         <div class="col-12 col-lg-6 col-md-6">
-            <div class="card">
+            <div class="card border border-1 border-opacity-50">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
                         <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
@@ -93,7 +93,7 @@ if (isset($_SESSION['login']) == 'true') {
     </div>
     <div class="row">
         <div class="col-12 col-lg-8 col-md-6">
-            <div class="card">
+            <div class="card border border-1 border-opacity-50">
                 <div class="card-body">
                     <div style="height: 300px;">
                         <canvas id="myBar"></canvas>
@@ -102,7 +102,7 @@ if (isset($_SESSION['login']) == 'true') {
             </div>
         </div>
         <div class="col-12 col-lg-4 col-md-6">
-            <div class="card">
+            <div class="card border border-1 border-opacity-50">
                 <div class="card-body">
                     <div style="height: 300px;">
                         <canvas id="myPolar"></canvas>

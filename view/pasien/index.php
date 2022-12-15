@@ -31,7 +31,7 @@ if (isset($_SESSION['login']) == 'true') {
     ?>
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card border border-1 border-opacity-50">
                 <div class="card-body">
                     <div class="d-flex justify-content-end align-items-center mb-3">
                         <a href="<?= base_url('pasien/add') ?>"><button type="button" class="btn btn-primary">Tambah

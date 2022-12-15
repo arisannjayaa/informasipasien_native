@@ -27,7 +27,7 @@ if (isset($_SESSION['login']) == 'true') {
 
     <div class="row">
         <div class="col">
-            <div class="card">
+            <div class="card border border-1 border-opacity-50">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">

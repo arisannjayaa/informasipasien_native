@@ -10,11 +10,11 @@ if (!isset($_SESSION['login'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
+        <link rel="stylesheet" href="<?= base_url('public/assets/extensions/bootstrap-5.2.3/css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
         <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/auth.css') ?>">
         <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.svg') ?>" type="image/x-icon">
         <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.png') ?>" type="image/png">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/css/bootstrap.min.css" />
     </head>
 
     <body>

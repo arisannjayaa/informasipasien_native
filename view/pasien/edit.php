@@ -4,7 +4,7 @@ if (isset($_SESSION['login']) == 'true') {
     $id = $_GET['id'];
     $title = 'Edit Data Pasien';
     $pageheading = 'Edit Data Pasien';
-    $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY id_provinsi");
+    $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY nama_provinsi asc");
     $queryPasien = mysqli_query($con, "SELECT id_pasien, id_kabupaten FROM pasiens WHERE id_pasien = '$id'");
     $data = mysqli_fetch_assoc($queryPasien);
     require_once('../../view/template/header.php');
@@ -12,7 +12,7 @@ if (isset($_SESSION['login']) == 'true') {
     <form action="<?= base_url('config/pasien/update') ?>" method="post">
         <div class="row">
             <div class="col">
-                <div class="card shadow-sm">
+                <div class="card border border-1 border-opacity-50">
                     <div class="card-body">
                         <div class="row">
                             <input type="text" name="id" hidden value="<?= $data['id_pasien'] ?>">
@@ -160,5 +160,5 @@ if (isset($_SESSION['login']) == 'true') {
             $('#provinsi').val(response.id_provinsi).trigger('change');
             $('#kabupaten').val(response.id_kabupaten).trigger('change');
         }
-    })
+    });
 </script>
