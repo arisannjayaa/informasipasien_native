@@ -38,12 +38,12 @@ if (isset($_SESSION['login']) == 'true') {
                     </button>
                 </div>
                 <form action="<?= base_url('config/pengaturan/update') ?>" method="post" enctype="multipart/form-data">
-                    <div class="modal-body">
+                    <div class=" modal-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Gambar</label>
-                                    <input name="gambar" type="file" class="image-preview-filepond">
+                                    <input name="gambar" type="file" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="instansi" class="form-label">Nama Instansi</label>

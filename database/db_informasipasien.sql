@@ -657,9 +657,9 @@ ORDER BY labels;
 
 CREATE TABLE kop_surat(
     id_kop INT PRIMARY KEY AUTO_INCREMENT,
-    nama_instansi VARCHAR(60),
-    gambar_instansi VARCHAR(255),
-    id_provinsi int,
+    nama_instansi VARCHAR(60) DEFAULT '',
+    gambar_instansi VARCHAR(255) DEFAULT '',
+    id_provinsi int DEFAULT ,
     id_kabupaten int,
     email VARCHAR(60),
     no_telp VARCHAR(30),

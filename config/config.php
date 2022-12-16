@@ -10,6 +10,8 @@ if (mysqli_connect_error()) {
 function base_url($url = null)
 {
     $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/informasipasien_native";
+    // nrok base_url
+    // $base_url = 'https://e651-139-255-23-178.ap.ngrok.io/informasipasien_native';
     if ($url != null) {
         return $base_url . "/" . $url;
     } else {

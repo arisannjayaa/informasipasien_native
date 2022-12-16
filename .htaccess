@@ -13,7 +13,7 @@ RewriteRule ^updateprofil ./config/auth/update_profil_password.php
 RewriteRule ^pengaturan ./view/pengaturan/index.php
 
 # Mengamankan agar direktori tidak dapat diakses langsung
-Options All -Indexes
+# Options All -Indexes
 
 # Menghapus ekstensi php
 <IfModule mod_rewrite.c>

@@ -34,7 +34,7 @@ if (isset($_SESSION['login']) == 'true') {
                             <label>Username</label>
                         </div>
                         <div class="col-7 form-group">
-                            <input readonly type="text" class="form-control" value="<?= $_SESSION['username'] ?>">
+                            <span class="form-control"><?= $_SESSION['username'] ?></span>
                         </div>
                         <div class="col-2">
                             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#gantiusername">Ubah</button>
@@ -45,7 +45,7 @@ if (isset($_SESSION['login']) == 'true') {
                             <label for="">Role</label>
                         </div>
                         <div class="col-7">
-                            <input readonly type="text" class="form-control" id="username" value="<?= $_SESSION['role'] ?>">
+                            <span class="form-control"><?= $_SESSION['role'] ?></span>
                         </div>
                     </div>
                     <hr>
