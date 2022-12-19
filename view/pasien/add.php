@@ -3,7 +3,7 @@ require_once('../../config/config.php');
 if (isset($_SESSION['login']) == 'true') {
     $title = 'Tambah Data Pasien';
     $pageheading = 'Tambah Data Pasien';
-    $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY id_provinsi");
+    $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY nama_provinsi asc");
     require_once('../../view/template/header.php');
 ?>
     <form action="<?= base_url('config/pasien/add') ?>" method="post">
@@ -15,7 +15,7 @@ if (isset($_SESSION['login']) == 'true') {
         <?php }  ?>
         <div class="row">
             <div class="col">
-                <div class="card">
+                <div class="card border border-1 border-opacity-50">
                     <div class="card-body">
                         <div class="row mb-4">
                             <h5>Nomor Induk Kependudukan (NIK)</h5>
@@ -56,7 +56,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     <div class="col-9 form-floating">
                                         <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
                                             <option value="" selected>Pilih jenis kelamin</option>
-                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Laki-Laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
                                         <label for="jenis_kelamin">Jenis kelamin</label>
@@ -138,7 +138,6 @@ if (isset($_SESSION['login']) == 'true') {
             }
         });
     });
-
     $('#findnik').click(function() {
         var nik = $("#nik").val();
         $.ajax({
@@ -159,6 +158,7 @@ if (isset($_SESSION['login']) == 'true') {
                     $("#pesannik").removeClass("text-danger mt-1")
                     $("#pesannik").addClass("text-success mt-1")
                     $("#pesannik").html("<small>Data NIK Dari Pasien Tersedia</small>");
+                    // console.log(b);
                     $("#nama").val(obj.nama);
                     $("#tempat_lahir").val(obj.tempat_lahir);
                     $("#tanggal_lahir").val(obj.tgl_lahir);

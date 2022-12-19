@@ -5,6 +5,9 @@ require_once "../../library/phpqrcode/qrlib.php";
 $date = date("d-m-Y", strtotime($tanggal_lahir));
 // nama folder tempat penyimpanan file qrcode
 $penyimpanan = "../../library/phpqrcode/temp/";
+$img = base_url('public/assets/images/logo/logo1.png');
+$queryKop = mysqli_query($con, "SELECT * FROM kop_surat INNER JOIN provinsi ON kop_surat.id_provinsi = provinsi.id_provinsi INNER JOIN kabupaten ON kop_surat.id_kabupaten = kabupaten.id_kabupaten");
+$d_kop = mysqli_fetch_assoc($queryKop);
 
 // membuat folder dengan nama "temp"
 if (!file_exists($penyimpanan))
@@ -42,14 +45,37 @@ $pdf->SetMargins(5, 5); #margin atas, samping
 $pdf->AddPage();
 
 $pdf->SetFont('courier', 'B', 15); #font dan ukuran
-$pdf->Image("../../library/fpdf/bg2.png", 0, 0, 150, 90);  #import background rs bapakmu, (angka ke 1,2 = koordinat) (angka ke3,4 = ukuran)
-$pdf->Image("../../library/phpqrcode/temp/$kartu_rs.png", 120, 60, 30, 30); #import barcodenya            -------------------; ; --------------------------
-$pdf->Cell(0, 15, ' ', 0, 1);
-$pdf->Cell(0, 10, ' ', 0, 1);
-$pdf->Cell(38, 7, 'NAMA      : ', 0, 0);
-$pdf->CellFitScale(0, 7, $nama, 0, 1);
-$pdf->Cell(0, 7, 'NIK       : ' . $nik, 0, 1);
-$pdf->Cell(0, 7, 'TGL LAHIR : ' . $date, 0, 1);
+$pdf->Image("../../library/fpdf/bg_6.png", 0, 0, 150, 90);  #import background rs bapakmu, (angka ke 1,2 = koordinat) (angka ke3,4 = ukuran)
+$pdf->Image($img, 10, 0, 30, 30);
+$pdf->SetFont('Arial', 'B', 16);
+$pdf->SetTextColor(255, 255, 255);
+$pdf->Multicell(0, 8, $d_kop['nama_instansi'], 0, "C");
+$pdf->SetFont('Arial', '', 6);
+$pdf->Multicell(0, 4, $d_kop['alamat'], 0, "C");
+$pdf->Multicell(0, 4, 'Kabupaten ' . $d_kop['nama_kabupaten'] . ', Provinsi ' . $d_kop['nama_provinsi'], 0, "C");
+$pdf->Multicell(0, 4, 'Email: ' . $d_kop['email'] . ', Telp: ' . $d_kop['no_telp'] . '', 0, "C");
+$pdf->Image("../../library/phpqrcode/temp/$kartu_rs.png", 120, 40, 30, 30); #import barcodenya            -------------------; ; --------------------------
+$pdf->SetTextColor(0, 0, 0);
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Ln(15);
+$pdf->Multicell(0, 4, 'KARTU PASIEN', 0, "L");
+$pdf->Ln(2);
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(35, 7, 'NIK', 0, 0);
+$pdf->Cell(3, 7, ':', 0, 0);
+$pdf->Cell(0, 7, $nik, 0, 0);
+$pdf->Ln(5);
+$pdf->Cell(35, 7, 'Nama', 0, 0);
+$pdf->Cell(3, 7, ':', 0, 0);
+$pdf->Cell(0, 7, $nama, 0, 0);
+$pdf->Ln(5);
+$pdf->Cell(35, 7, 'Alamat', 0, 0);
+$pdf->Cell(3, 7, ':', 0, 0);
+$pdf->Cell(0, 7, $alamat, 0, 0);
+$pdf->Ln(5);
+$pdf->Cell(35, 7, 'Tanggal Lahir', 0, 0);
+$pdf->Cell(3, 7, ':', 0, 0);
+$pdf->Cell(0, 7, $date, 0, 0);
 
 # cetak pdf
 $filename = "../../files/$kartu_rs.pdf";

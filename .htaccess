@@ -1,4 +1,6 @@
+# Menulis ulang url
 RewriteEngine On
+RewriteRule ^laporan-pdf ./config/laporan/generatepdf.php
 RewriteRule ^laporan ./view/laporan/index.php
 RewriteRule ^login ./view/auth/login.php
 RewriteRule ^logout ./config/auth/logout.php
@@ -9,11 +11,11 @@ RewriteRule ^pasien/edit ./view/pasien/edit.php
 RewriteRule ^profil ./view/profile/index.php
 RewriteRule ^updateprofil ./config/auth/update_profil_password.php
 RewriteRule ^pengaturan ./view/pengaturan/index.php
-# RewriteRule ^403 error/error?403
-# RewriteRule ^404 error/error.php?404
-# RewriteRule ^500 error/error.php?500
-# ErrorDocument 404 https://localhost/repository-prodi/404
 
+# Mengamankan agar direktori tidak dapat diakses langsung
+Options All -Indexes
+
+# Menghapus ekstensi php
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/extensions/sweetalert2/sweetalert2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app-dark.css') ?>">
-
+    <link rel="stylesheet" href="<?= base_url('public/assets/extensions/filepond/filepond.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('public/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/filepond.css') ?>">
     <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.svg') ?>" type="image/x-icon">
     <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.png') ?>" type="image/png">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/fontawesome.css') ?>">
@@ -153,11 +155,15 @@
             </header>
             <div id="main-content">
 
-                <div class="page-heading">
+                <div class="page-heading mb-0 mb-3">
                     <div class="page-title">
                         <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3><?= $pageheading ?></h3>
+                            <div class="col-12 col-md-12 order-md-1 order-last">
+                                <div class="card mb-0 border border-1 border-opacity-50">
+                                    <div class="card-body">
+                                        <h4><?= $pageheading ?></h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

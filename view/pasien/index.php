@@ -31,7 +31,7 @@ if (isset($_SESSION['login']) == 'true') {
     ?>
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card border border-1 border-opacity-50">
                 <div class="card-body">
                     <div class="d-flex justify-content-end align-items-center mb-3">
                         <a href="<?= base_url('pasien/add') ?>"><button type="button" class="btn btn-primary">Tambah
@@ -71,8 +71,6 @@ if (isset($_SESSION['login']) == 'true') {
                                                         Delete</span></li>
                                                 <li><a href="<?php echo "./../files/" . $data['kartu_rs'] . ".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
                                                             Kartu Pasien</span></li>
-                                                <li><span role="button" class="dropdown-item detail"><i class="bi bi-eye-fill"></i>
-                                                        Lihat Detail</span></li>
                                                 <li><a href="<?= base_url('files/') . $data['info_pasien'] . '.pdf' ?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
                                                             <i class="bi bi-file-earmark-fill text-secondary"></i>
                                                             Cetak Informasi Pasien</span></a></li>
