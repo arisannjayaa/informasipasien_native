@@ -11,7 +11,7 @@ function base_url($url = null)
 {
     $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/informasipasien_native";
     // ngrok base_url
-    // $base_url = 'https://f329-180-252-65-10.ap.ngrok.io/informasipasien_native';
+    // $base_url = 'https://73ab-180-252-65-10.ap.ngrok.io/informasipasien_native';
     if ($url != null) {
         return $base_url . "/" . $url;
     } else {

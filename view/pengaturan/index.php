@@ -8,6 +8,8 @@ if (isset($_SESSION['login']) == 'true') {
     $query = mysqli_query($con, "SELECT * FROM kop_surat INNER JOIN provinsi ON kop_surat.id_provinsi = provinsi.id_provinsi INNER JOIN kabupaten ON kop_surat.id_kabupaten = kabupaten.id_kabupaten;");
     $queryProvinsi = mysqli_query($con, "SELECT * FROM provinsi ORDER BY nama_provinsi ASC");
     $data = mysqli_fetch_assoc($query);
+    // var_dump($data);
+    // die();
     require_once('../../view/template/header.php');
 ?>
     <?php
@@ -147,7 +149,7 @@ if (isset($_SESSION['login']) == 'true') {
     header('location: ' . base_url('login'));
 } ?>
 <script>
-    var id_kop = "<?= $data['id_pengaturan'] ?>";
+    var id_kop = "<?= $data['id_kop'] ?>";
     console.log(id_kop);
     $("#provinsi").change(function() {
         var id_prov = $(this).val();
