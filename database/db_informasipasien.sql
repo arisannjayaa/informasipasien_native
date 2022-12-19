@@ -1,4 +1,4 @@
-DROP database db_informasipasien_native;
+-- DROP database db_informasipasien_native;
 CREATE DATABASE db_informasipasien_native;
 
 USE db_informasipasien_native;
@@ -659,7 +659,7 @@ CREATE TABLE kop_surat(
     id_kop INT PRIMARY KEY AUTO_INCREMENT,
     nama_instansi VARCHAR(60) DEFAULT '',
     gambar_instansi VARCHAR(255) DEFAULT '',
-    id_provinsi int DEFAULT ,
+    id_provinsi int,
     id_kabupaten int,
     email VARCHAR(60),
     no_telp VARCHAR(30),
