@@ -40,7 +40,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     <div class="col-9 form-floating">
                                         <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
                                             <option value="">Pilih jenis kelamin</option>
-                                            <option value="Laki-laki">Laki-laki
+                                            <option value="Laki-Laki">Laki-laki
                                             </option>
                                             <option value="Perempuan">Perempuan
                                             </option>

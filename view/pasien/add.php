@@ -56,7 +56,7 @@ if (isset($_SESSION['login']) == 'true') {
                                     <div class="col-9 form-floating">
                                         <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
                                             <option value="" selected>Pilih jenis kelamin</option>
-                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Laki-Laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
                                         <label for="jenis_kelamin">Jenis kelamin</label>
@@ -138,7 +138,6 @@ if (isset($_SESSION['login']) == 'true') {
             }
         });
     });
-
     $('#findnik').click(function() {
         var nik = $("#nik").val();
         $.ajax({
@@ -159,6 +158,7 @@ if (isset($_SESSION['login']) == 'true') {
                     $("#pesannik").removeClass("text-danger mt-1")
                     $("#pesannik").addClass("text-success mt-1")
                     $("#pesannik").html("<small>Data NIK Dari Pasien Tersedia</small>");
+                    // console.log(b);
                     $("#nama").val(obj.nama);
                     $("#tempat_lahir").val(obj.tempat_lahir);
                     $("#tanggal_lahir").val(obj.tgl_lahir);

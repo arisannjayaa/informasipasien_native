@@ -161,7 +161,7 @@
                             <div class="col-12 col-md-12 order-md-1 order-last">
                                 <div class="card mb-0 border border-1 border-opacity-50">
                                     <div class="card-body">
-                                        <span class="h5"><?= $pageheading ?></span>
+                                        <h4><?= $pageheading ?></h4>
                                     </div>
                                 </div>
                             </div>

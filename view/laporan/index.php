@@ -6,23 +6,23 @@ if (isset($_SESSION['login']) == 'true') {
     require_once('../../view/template/header.php');
 ?>
     <form action="<?= base_url('laporan-pdf') ?>" method="post">
-        <div class="row mb-3">
-            <div class="col-6 col-lg-5">
+        <div class="row mb-3 gap-3 gap-lg-0">
+            <div class="col-12 col-lg-5">
                 <div class="form-floating">
                     <input type="date" class="form-control" id="dari" placeholder="" value="<?= date("Y-m-d") ?>" name="dari">
                     <label for="dari">Dari</label>
                 </div>
             </div>
-            <div class="col-6 col-lg-5 mb-2 mb-lg-0">
+            <div class="col-12 col-lg-5">
                 <div class="form-floating">
                     <input type="date" class="form-control" id="sampai" placeholder="" value="<?= date("Y-m-d") ?>" name="sampai">
                     <label for="sampai">Sampai</label>
                 </div>
             </div>
-            <div class="col-6 col-lg-1 d-grid">
+            <div class="col-12 col-lg-1 d-grid">
                 <button type="button" id="cari" class="btn btn-primary"><i class="bi bi-search"></i></button>
             </div>
-            <div class="col-6 col-lg-1 d-grid">
+            <div class="col-12 col-lg-1 d-grid">
                 <button type="submit" id="print" class="btn btn-primary"><i class="bi bi-printer-fill"></i></button>
             </div>
         </div>
