@@ -13,7 +13,7 @@ $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->Image($img, 10, 0, 45, 45);
 $pdf->SetFont('Arial', 'B', 20);
-$pdf->Multicell(0, 10, $d_kop['nama_instansi'], 0, "C");
+$pdf->Multicell(0, 10, 'Rumah Sakit ' . $d_kop['nama_instansi'], 0, "C");
 $pdf->SetFont('Arial', '', 10);
 $pdf->Multicell(0, 5, $d_kop['alamat'], 0, "C");
 $pdf->Multicell(0, 5, 'Kabupaten ' . $d_kop['nama_kabupaten'] . ', Provinsi ' . $d_kop['nama_provinsi'], 0, "C");

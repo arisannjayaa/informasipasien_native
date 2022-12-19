@@ -2,7 +2,7 @@
 require_once('../config.php');
 if (isset($_GET['nik'])) {
     $nik = $_GET['nik'];
-    $query = mysqli_query($con, "SELECT * FROM ktps WHERE nik = '$nik'");
+    $query = mysqli_query($con, "SELECT * FROM db_projek.tb_ktp WHERE nik = '$nik'");
     $data = mysqli_fetch_assoc($query);
     echo json_encode($data);
 } elseif (isset($_GET['id_pasien'])) {
