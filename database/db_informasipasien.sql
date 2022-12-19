@@ -528,32 +528,32 @@ INSERT INTO kabupaten (id_kabupaten, nama_kabupaten, id_provinsi) VALUES
 (474, 'Teluk Wondama', 34),
 (475, 'Teluk Bintuni', 34);
 
-CREATE TABLE ktps(
-	nik VARCHAR(20) NOT NULL,
-	nama VARCHAR(100) DEFAULT NULL,
-	tempat_lahir VARCHAR(50) DEFAULT NULL,
-	tgl_lahir DATE DEFAULT NULL,
-	jenis_kelamin VARCHAR(30) DEFAULT NULL,
-	gol_darah VARCHAR(2) DEFAULT NULL,
-	alamat VARCHAR(100) DEFAULT NULL,
-	kelurahan VARCHAR(100) DEFAULT NULL,
-	kecamatan VARCHAR(100) DEFAULT NULL,
-	agama VARCHAR(50) DEFAULT NULL,
-	status_kawin VARCHAR(30) DEFAULT NULL,
-	pekerjaan VARCHAR(100) DEFAULT NULL,
-	kewarganegaraan VARCHAR(100) DEFAULT NULL,
-	berlaku VARCHAR(50) DEFAULT NULL,
-	tgl_buat DATE DEFAULT NULL
-);
+-- CREATE TABLE ktps(
+-- 	nik VARCHAR(20) NOT NULL,
+-- 	nama VARCHAR(100) DEFAULT NULL,
+-- 	tempat_lahir VARCHAR(50) DEFAULT NULL,
+-- 	tgl_lahir DATE DEFAULT NULL,
+-- 	jenis_kelamin VARCHAR(30) DEFAULT NULL,
+-- 	gol_darah VARCHAR(2) DEFAULT NULL,
+-- 	alamat VARCHAR(100) DEFAULT NULL,
+-- 	kelurahan VARCHAR(100) DEFAULT NULL,
+-- 	kecamatan VARCHAR(100) DEFAULT NULL,
+-- 	agama VARCHAR(50) DEFAULT NULL,
+-- 	status_kawin VARCHAR(30) DEFAULT NULL,
+-- 	pekerjaan VARCHAR(100) DEFAULT NULL,
+-- 	kewarganegaraan VARCHAR(100) DEFAULT NULL,
+-- 	berlaku VARCHAR(50) DEFAULT NULL,
+-- 	tgl_buat DATE DEFAULT NULL
+-- );
 
-INSERT INTO ktps(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tgl_lahir, alamat) VALUES
-('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
-('Katon Jaya Deva Yogananada', '5103050101010002', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
-('Iwan Sandhitama', '5103050101010003', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
-('Dedo Karmanata', '5103050101010004', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
-('Walter Andrian', '5103050101010005', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
-('Meidi Dharma', '5103050101010006', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
-('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua');
+-- INSERT INTO ktps(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tgl_lahir, alamat) VALUES
+-- ('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
+-- ('Katon Jaya Deva Yogananada', '5103050101010002', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
+-- ('Iwan Sandhitama', '5103050101010003', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
+-- ('Dedo Karmanata', '5103050101010004', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
+-- ('Walter Andrian', '5103050101010005', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
+-- ('Meidi Dharma', '5103050101010006', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
+-- ('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua');
 
 CREATE TABLE pasiens(
 	id_pasien INT AUTO_INCREMENT,
@@ -577,14 +577,14 @@ CREATE TABLE pasiens(
 
 SET SQL_MODE='ALLOW_INVALID_DATES';
 
-INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at) VALUES
-('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-10-31', 'Nusa Dua', NOW(), NOW()),
-('Katon Jaya Deva Yogananada', '5103050101010002', 'A', 'Laki-laki', 'Badung', '2002-05-24', 'Nusa Dua', NOW(), NOW()),
-('Iwan Sandhitama', '5103050101010003', 'A', 'Laki-laki', 'Buleleng', '2002-08-20', 'Nusa Dua', NOW(), NOW()),
-('Dedo Karmanata', '5103050101010004', 'A', 'Laki-laki', 'Karangasem', '2002-09-04', 'Nusa Dua', NOW(), NOW()),
-('Walter Andrian', '5103050101010005', 'A', 'Laki-laki', 'Bekasi', '2002-08-09', 'Nusa Dua', NOW(), NOW()),
-('Meidi Dharma', '5103050101010006', 'A', 'Laki-laki', 'Denpasar', '2002-5-28', 'Nusa Dua', NOW(), NOW()),
-('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2002-07-15', 'Nusa Dua', NOW(), NOW());
+-- INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at) VALUES
+-- ('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-10-31', 'Nusa Dua', NOW(), NOW()),
+-- ('Katon Jaya Deva Yogananada', '5103050101010002', 'A', 'Laki-laki', 'Badung', '2002-05-24', 'Nusa Dua', NOW(), NOW()),
+-- ('Iwan Sandhitama', '5103050101010003', 'A', 'Laki-laki', 'Buleleng', '2002-08-20', 'Nusa Dua', NOW(), NOW()),
+-- ('Dedo Karmanata', '5103050101010004', 'A', 'Laki-laki', 'Karangasem', '2002-09-04', 'Nusa Dua', NOW(), NOW()),
+-- ('Walter Andrian', '5103050101010005', 'A', 'Laki-laki', 'Bekasi', '2002-08-09', 'Nusa Dua', NOW(), NOW()),
+-- ('Meidi Dharma', '5103050101010006', 'A', 'Laki-laki', 'Denpasar', '2002-5-28', 'Nusa Dua', NOW(), NOW()),
+-- ('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2002-07-15', 'Nusa Dua', NOW(), NOW());
 
 CREATE TABLE login(
 	id_login INT(2) PRIMARY KEY AUTO_INCREMENT,
@@ -669,7 +669,7 @@ CREATE TABLE kop_surat(
 );
 
 INSERT INTO kop_surat(nama_instansi, gambar_instansi, id_provinsi, id_kabupaten, email, no_telp, alamat) VALUES
-('Rumah Sakit Surya Husada', 'rumahsakit.png', 17, 255, 'suryahusada@gmail.com', '036122003311', 'Jalan ByPass Ngurah Rai 99x');
+('Surya Husada', 'rumahsakit.png', 17, 255, 'suryahusada@gmail.com', '036122003311', 'Jalan ByPass Ngurah Rai 99x');
 
 
 -- select * from pasiens 
