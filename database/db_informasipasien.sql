@@ -1,7 +1,7 @@
 -- DROP database db_informasipasien_native;
-CREATE DATABASE db_informasipasien_native;
+-- CREATE DATABASE db_informasipasien_native;
 
-USE db_informasipasien_native;
+-- USE db_informasipasien_native;
 
 CREATE TABLE provinsi (
   id_provinsi int PRIMARY KEY NOT NULL,
@@ -554,6 +554,7 @@ INSERT INTO kabupaten (id_kabupaten, nama_kabupaten, id_provinsi) VALUES
 -- ('Walter Andrian', '5103050101010005', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
 -- ('Meidi Dharma', '5103050101010006', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua'),
 -- ('Arditha Kartika Putra', '5103050101010007', 'A', 'Laki-laki', 'Badung', '2001-01-01', 'Nusa Dua');
+SET SQL_MODE='ALLOW_INVALID_DATES';
 
 CREATE TABLE pasiens(
 	id_pasien INT AUTO_INCREMENT,
@@ -574,8 +575,6 @@ CREATE TABLE pasiens(
 	updated_at TIMESTAMP NOT NULL,
 	PRIMARY KEY (id_pasien)
 );
-
-SET SQL_MODE='ALLOW_INVALID_DATES';
 
 -- INSERT INTO pasiens(nama, nik, gol_darah, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, created_at, updated_at) VALUES
 -- ('Ari Sanjaya', '5103050101010001', 'A', 'Laki-laki', 'Badung', '2001-10-31', 'Nusa Dua', NOW(), NOW()),

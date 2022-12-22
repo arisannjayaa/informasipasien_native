@@ -1,7 +1,7 @@
 <?php
 session_start();
 date_default_timezone_set('Asia/Kuala_Lumpur');
-$con = mysqli_connect('localhost', 'root', '', 'db_informasipasien_native');
+$con = mysqli_connect('localhost', 'root', '', 'db_informasipasien');
 
 if (mysqli_connect_error()) {
     header("location: " . base_url("500"));

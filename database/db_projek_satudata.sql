@@ -1,5 +1,5 @@
-CREATE DATABASE db_projek;
-USE db_projek;
+-- CREATE DATABASE db_projek_satu_data;
+-- USE db_projek;
 CREATE TABLE `tb_ktp` (
     `nik` varchar(20) NOT NULL PRIMARY KEY,
     `nama` varchar(100) DEFAULT NULL,

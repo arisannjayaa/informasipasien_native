@@ -12,6 +12,7 @@ RewriteRule ^profil ./view/profile/index.php
 RewriteRule ^updateprofil ./config/auth/update_profil_password.php
 RewriteRule ^pengaturan ./view/pengaturan/index.php
 
+
 # Mengamankan agar direktori tidak dapat diakses langsung
 Options All -Indexes
 
