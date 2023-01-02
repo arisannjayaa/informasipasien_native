@@ -1,6 +1,6 @@
 <?php
 require_once('../config.php');
-$user = $_POST['username'];
+$user = mysqli_real_escape_string($con, $_POST['username']);
 $pass = SHA1($_POST['password']);
 $query = mysqli_query($con, "SELECT * FROM login WHERE username='$user' AND password='$pass'");
 $data = mysqli_fetch_assoc($query);
