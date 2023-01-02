@@ -4,7 +4,7 @@ date_default_timezone_set('Asia/Kuala_Lumpur');
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$dbInformasiPasien = 'db_informasipasien_native';
+$dbInformasiPasien = 'db_informasipasien';
 $dbKtp = 'db_projek';
 $con = mysqli_connect($host, $username, $password, $dbInformasiPasien);
 

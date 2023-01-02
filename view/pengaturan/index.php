@@ -111,8 +111,8 @@ if (isset($_SESSION['login']) == 'true') {
                     <div class="row mb-4">
                         <div class="col-12">
                             <div class="d-flex gap-5 align-items-center">
-                                <div class="rounded-pill shadow-sm p-3">
-                                    <img width="200" src="<?= base_url('public/assets/images/logo/' . $data['gambar_instansi']) ?>" alt="">
+                                <div class="shadow-sm">
+                                    <img class="img-thumbnail" width="200" src="<?= base_url('public/assets/images/logo/' . $data['gambar_instansi']) ?>" alt="">
                                 </div>
                                 <h1 class="mt-3">Rumah Sakit <?= $data['nama_instansi'] ?></h1>
                             </div>

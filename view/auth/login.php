@@ -23,37 +23,35 @@ if (!isset($_SESSION['login'])) {
                 <div class="col-lg-5 col-12">
                     <div id="auth-left">
                         <div class="auth-logo">
-                            <a class="h1 mb-0" href="<?= base_url() ?>">Informasi Pasien</a>
+                            <a class="h1" href="<?= base_url() ?>">Informasi Pasien</a>
                         </div>
+                        <?php
+                        if (isset($_SESSION['akunsalah'])) { ?>
+                            <div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> <?= $_SESSION['akunsalah'] ?></div>
+                        <?php
+                            unset($_SESSION['akunsalah']);
+                        } elseif (isset($_SESSION['update_success'])) { ?>
+                            <div class="alert alert-success"><i class="bi bi-check-circle"></i> <?= $_SESSION['update_success'] ?></div>
+                        <?php
+                            unset($_SESSION['update_success']);
+                        }
+                        ?>
                         <h1 class="auth-title">Log in.</h1>
-                        <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
-
-                        <form action="index.html">
+                        <form action="<?= base_url('config/auth/login') ?>" method="post">
                             <div class="form-group position-relative has-icon-left mb-4">
-                                <input type="text" class="form-control form-control-xl" placeholder="Username">
+                                <input type="text" class="form-control form-control-xl" placeholder="Username" name="username">
                                 <div class="form-control-icon">
                                     <i class="bi bi-person"></i>
                                 </div>
                             </div>
                             <div class="form-group position-relative has-icon-left mb-4">
-                                <input type="password" class="form-control form-control-xl" placeholder="Password">
+                                <input type="password" class="form-control form-control-xl" placeholder="Password" name="password">
                                 <div class="form-control-icon">
                                     <i class="bi bi-shield-lock"></i>
                                 </div>
                             </div>
-                            <div class="form-check form-check-lg d-flex align-items-end">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                                    Keep me logged in
-                                </label>
-                            </div>
-                            <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                            <button class="btn btn-primary btn-block btn-lg shadow-lg">Log in</button>
                         </form>
-                        <div class="text-center mt-5 text-lg fs-4">
-                            <p class="text-gray-600">Don't have an account? <a href="auth-register.html" class="font-bold">Sign
-                                    up</a>.</p>
-                            <p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-7 d-none d-lg-block">
