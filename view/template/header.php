@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/extensions/sweetalert2/sweetalert2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app-dark.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('public/assets/extensions/filepond/filepond.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('public/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/filepond.css') ?>">
     <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.svg') ?>" type="image/x-icon">
     <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.png') ?>" type="image/png">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/fontawesome.css') ?>">
