@@ -29,7 +29,7 @@ if (isset($_SESSION['login']) == 'true') {
         ];
         $pies = [
             'label' => [
-                ['Laki'], ['Perempuan']
+                ['Laki-Laki'], ['Perempuan']
             ],
             'data' => [
                 [0], [0]

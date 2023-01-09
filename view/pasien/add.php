@@ -100,7 +100,7 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="no_telp">No Telepon/Hp</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <input type="text" class="form-control" id="email" placeholder="Tempat lahir" name="email">
+                                        <input type="email" class="form-control" id="email" placeholder="Tempat lahir" name="email">
                                         <label for="email">Email</label>
                                     </div>
                                 </div>
