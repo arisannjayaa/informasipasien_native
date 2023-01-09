@@ -40,7 +40,7 @@ if ($query->num_rows > 0) {
         $pdf->CellFitScale(81, 6, $data['nama'], 1, 0);
         $pdf->Cell(26, 6, $data['jenis_kelamin'], 1, 0, 'L');
         $pdf->Cell(20, 6, $data['gol_darah'], 1, 0, 'L');
-        $pdf->Cell(26, 6, $data['no_telp'], 1, 0, 'L');
+        $pdf->CellFit(26, 6, $data['no_telp'], 1, 0, 'L');
     }
 } else {
     $pdf->Ln(6);

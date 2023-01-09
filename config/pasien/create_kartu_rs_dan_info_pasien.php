@@ -50,7 +50,7 @@ $pdf->Image($img, 5, 6, 20, 20);
 $pdf->SetFont('Arial', 'B', 13);
 $pdf->SetTextColor(255, 255, 255);
 $pdf->Cell(20, 8, '', 0, 0);
-$pdf->CellFitScale(100, 8, 'Rumah Sakit '.$d_kop['nama_instansi'], 0, 1, "C");
+$pdf->CellFitScale(100, 8, 'Rumah Sakit ' . $d_kop['nama_instansi'], 0, 1, "C");
 $pdf->SetFont('Arial', '', 6);
 $pdf->Multicell(0, 4, $d_kop['alamat'], 0, "C");
 $pdf->Multicell(0, 4, 'Kabupaten ' . $d_kop['nama_kabupaten'] . ', Provinsi ' . $d_kop['nama_provinsi'], 0, "C");
@@ -95,10 +95,10 @@ $pdf->SetMargins(5, 5); #margin atas, samping
 $pdf->AddPage();
 
 $pdf->SetFont('arial', 'B', 20); #font dan ukuran
-$pdf->Image("../../library/fpdf/bg3.png", 0, 0, 210, 297); 
+$pdf->Image("../../library/fpdf/bg3.png", 0, 0, 210, 297);
 $pdf->Cell(0, 18, ' ', 0, 1);
 $pdf->Cell(35, 8, '', 0, 0);
-$pdf->CellFitScale(130, 8, 'Rumah Sakit '.$d_kop['nama_instansi'], 0, 1, "C");
+$pdf->CellFitScale(130, 8, 'Rumah Sakit ' . $d_kop['nama_instansi'], 0, 1, "C");
 $pdf->SetFont('Arial', '', 10);
 $pdf->Multicell(0, 5, $d_kop['alamat'], 0, "C");
 $pdf->Multicell(0, 5, 'Kabupaten ' . $d_kop['nama_kabupaten'] . ', Provinsi ' . $d_kop['nama_provinsi'], 0, "C");
@@ -121,7 +121,7 @@ $pdf->Cell(26, 7, 'Gol. Darah', 0, 0);
 $pdf->CellFitScale(42, 7, ' : ' . $gol_darah, 0, 1);
 $pdf->Cell(20, 7, 'Alamat', 0, 0);
 $pdf->Cell(3.5, 7, ' :', 0, 0);
-$pdf->MultiCell(110, 7, $alamat, 0, 0);
+$pdf->MultiCell(175, 7, $alamat, 0, 0);
 
 
 # cetak pdf
