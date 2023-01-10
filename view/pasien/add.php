@@ -48,7 +48,7 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="tempat_lahir">Tempat lahir</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal lahir" name="tanggal_lahir">
+                                        <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal lahir" name="tanggal_lahir" required>
                                         <label for="tanggal_lahir">Tanggal lahir</label>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="kabupaten">Kabupaten/Kota</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"></textarea>
+                                        <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat" required></textarea>
                                         <label for="alamat">Alamat tinggal</label>
                                     </div>
                                 </div>

@@ -132,7 +132,7 @@ if (isset($_SESSION['login']) == 'true') {
             data: {
                 labels: bar.label,
                 datasets: [{
-                    label: 'Data Pasien <?= date('Y') ?>',
+                    label: 'Data Pasien',
                     data: bar.data,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
