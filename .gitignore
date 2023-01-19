@@ -1,2 +1,3 @@
 /library/phpqrcode/temp/
-/files
+/files/*.pdf
+*.zip

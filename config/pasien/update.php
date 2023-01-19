@@ -19,7 +19,7 @@ $info_pasien        = $_POST['info_pasien'];
 // echo json_encode($_POST);
 // die();
 
-require_once('create_kartu_rs_dan_info_pasien.php');
+//require_once('create_kartu_rs_dan_info_pasien.php');
 
 $query = mysqli_query($con, "UPDATE pasiens SET nama='$nama', jenis_kelamin='$jenis_kelamin', gol_darah='$gol_darah', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', no_telp='$no_telp',email='$email',  id_provinsi='$provinsi', id_kabupaten='$kabupaten', updated_at='$updated_at' WHERE id_pasien='$id'");
 

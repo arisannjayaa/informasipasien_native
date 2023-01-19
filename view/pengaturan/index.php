@@ -13,20 +13,27 @@ if (isset($_SESSION['login']) == 'true') {
     require_once('../../view/template/header.php');
 ?>
     <?php
-    if (isset($_SESSION['update_success'])) { ?>
-        <div class="alert alert-success alert-dismissible show fade"><i class="bi bi-check-circle"></i>
-            <?= $_SESSION['update_success'] ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php
-        unset($_SESSION['update_success']);
-    } elseif (isset($_SESSION['update_failed'])) { ?>
+    if (isset($_SESSION['haruspng'])) { ?>
         <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-check-circle"></i>
-            <?= $_SESSION['update_failed'] ?>
+            <?= $_SESSION['haruspng'] ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php
-        unset($_SESSION['update_failed']);
+        unset($_SESSION['haruspng']);
+    } elseif (isset($_SESSION['harus11'])) { ?>
+        <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+            <?= $_SESSION['harus11'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['harus11']);
+    } elseif (isset($_SESSION['harussukses'])) { ?>
+        <div class="alert alert-success alert-dismissible show fade"><i class="bi bi-check-circle"></i>
+            <?= $_SESSION['harussukses'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php
+        unset($_SESSION['harussukses']);
     }
     ?>
     <!-- Start modal edit data -->
@@ -44,8 +51,8 @@ if (isset($_SESSION['login']) == 'true') {
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Gambar</label>
-                                    <input name="gambar" type="file" class="form-control">
+                                    <label for="username" class="form-label">Gambar - Rasio harus 1:1, dan berekstensi .PNG</label>
+                                    <input name="filegambar" type="file" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="instansi" class="form-label">Nama Instansi</label>
@@ -87,7 +94,7 @@ if (isset($_SESSION['login']) == 'true') {
                             <span class="d-none d-sm-block">Kembali</span>
                         </button>
 
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                        <button type="submit" name="upload" class="btn btn-primary ml-1" data-bs-dismiss="modal">
                             <i class="bx bx-check d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Update</span>
                         </button>
@@ -104,10 +111,10 @@ if (isset($_SESSION['login']) == 'true') {
                     <div class="row mb-4">
                         <div class="col-12">
                             <div class="d-flex gap-5 align-items-center">
-                                <div class="rounded-pill shadow-sm p-3">
-                                    <img width="200" src="<?= base_url('public/assets/images/logo/logo1.png') ?>" alt="">
+                                <div class="shadow-sm">
+                                    <img class="img-thumbnail" width="200" src="<?= base_url('public/assets/images/logo/' . $data['gambar_instansi']) ?>" alt="">
                                 </div>
-                                <h1 class="mt-3"><?= $data['nama_instansi'] ?></h1>
+                                <h1 class="mt-3">Rumah Sakit <?= $data['nama_instansi'] ?></h1>
                             </div>
                         </div>
                     </div>

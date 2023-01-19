@@ -10,7 +10,6 @@ if (!isset($_SESSION['login'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
-        <link rel="stylesheet" href="<?= base_url('public/assets/extensions/bootstrap-5.2.3/css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
         <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/auth.css') ?>">
         <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.svg') ?>" type="image/x-icon">
@@ -18,49 +17,47 @@ if (!isset($_SESSION['login'])) {
     </head>
 
     <body>
-        <div class="container">
-            <div class="row justify-content-center align-items-center" style="height: 100vh;">
-                <div class="col-md-6 col-lg-6 col-12 col-xl-4">
-                    <?php
-                    if (isset($_SESSION['akunsalah'])) { ?>
-                        <div class="alert alert-danger alert-dismissible show fade"><i class="bi bi-x"></i>
-                            <?= $_SESSION['akunsalah'] ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div id="auth">
+
+            <div class="row h-100">
+                <div class="col-lg-5 col-12">
+                    <div id="auth-left">
+                        <div class="auth-logo">
+                            <a class="h1" href="<?= base_url() ?>">Informasi Pasien</a>
                         </div>
-                    <?php
-                        unset($_SESSION['akunsalah']);
-                    } elseif (isset($_SESSION['update_success'])) { ?>
-                        <div class="alert alert-success alert-dismissible show fade"><i class="bi bi-check-circle"></i>
-                            <?= $_SESSION['update_success'] ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php
-                        unset($_SESSION['update_success']);
-                    }
-                    ?>
-                    <div class="card border border-2 border-primary">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h4>Login</h4>
-                                    <p>Masukkan username dan password</p>
+                        <?php
+                        if (isset($_SESSION['akunsalah'])) { ?>
+                            <div class="alert alert-danger"><i class="bi bi-exclamation-circle"></i> <?= $_SESSION['akunsalah'] ?></div>
+                        <?php
+                            unset($_SESSION['akunsalah']);
+                        } elseif (isset($_SESSION['update_success'])) { ?>
+                            <div class="alert alert-success"><i class="bi bi-check-circle"></i> <?= $_SESSION['update_success'] ?></div>
+                        <?php
+                            unset($_SESSION['update_success']);
+                        }
+                        ?>
+                        <h1 class="auth-title">Log in.</h1>
+                        <form action="<?= base_url('config/auth/login') ?>" method="post">
+                            <div class="form-group position-relative has-icon-left mb-4">
+                                <input type="text" class="form-control form-control-xl" placeholder="Username" name="username">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-person"></i>
                                 </div>
                             </div>
-                            <form action="<?= base_url('config/auth/login') ?>" method="post">
-                                <div class="row">
-                                    <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Username" name="username">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                                    </div>
-                                    <div class="d-grid">
-                                        <button class="btn btn-primary">Login</button>
-                                    </div>
+                            <div class="form-group position-relative has-icon-left mb-4">
+                                <input type="password" class="form-control form-control-xl" placeholder="Password" name="password">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-shield-lock"></i>
                                 </div>
-                            </form>
+                            </div>
+                            <button class="btn btn-primary btn-block btn-lg shadow-lg">Log in</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-7 d-none d-lg-block">
+                    <div id="auth-right">
+                        <div class="d-flex justify-content-center align-items-center vh-100">
+                            <img class="img-fluid p-5 bg-white rounded-4 h-50 shadow-sm" width="500" src="<?= base_url('public/assets/images/bg-login.jpg') ?>" alt="">
                         </div>
                     </div>
                 </div>
@@ -70,6 +67,7 @@ if (!isset($_SESSION['login'])) {
     </body>
 
     </html>
+
 
     <script src="<?= base_url('public/assets/js/bootstrap.js') ?>"></script>
     <script src="<?= base_url('public/assets/extensions/jquery/jquery.min.js') ?>"></script>

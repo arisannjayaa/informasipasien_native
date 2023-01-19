@@ -23,7 +23,7 @@ if (isset($_SESSION['login']) == 'true') {
                 <button type="button" id="cari" class="btn btn-primary"><i class="bi bi-search"></i></button>
             </div>
             <div class="col-12 col-lg-1 d-grid">
-                <button type="submit" id="print" class="btn btn-primary"><i class="bi bi-printer-fill"></i></button>
+                <button target="_blank" type="submit" id="print" class="btn btn-primary"><i class="bi bi-printer-fill"></i></button>
             </div>
         </div>
     </form>

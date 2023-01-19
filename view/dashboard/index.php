@@ -21,10 +21,20 @@ if (isset($_SESSION['login']) == 'true') {
             $pies['label'][] = $datapie['jenis_kelamin'];
         }
     } else {
-        $bars['data'][] = [];
-        $bars['label'][] = [];
-        $pies['data'][] = [];
-        $pies['label'][] = [];
+        $bars = [
+            'label' => [],
+            'data' => [
+                [0], [0]
+            ]
+        ];
+        $pies = [
+            'label' => [
+                ['Laki-Laki'], ['Perempuan']
+            ],
+            'data' => [
+                [0], [0]
+            ]
+        ];
     }
     $bar = json_encode($bars);
     $pie = json_encode($pies);
@@ -116,14 +126,13 @@ if (isset($_SESSION['login']) == 'true') {
         const barCtx = document.getElementById('myBar').getContext('2d');
         const polarCtx = document.getElementById('myPolar').getContext('2d');
         var bar = JSON.parse(`<?= $bar ?>`);
-        console.log(bar);
         var pie = JSON.parse(`<?= $pie ?>`);
         new Chart(barCtx, {
             type: 'line',
             data: {
                 labels: bar.label,
                 datasets: [{
-                    label: 'Data Pasien <?= date('Y') ?>',
+                    label: 'Data Pasien',
                     data: bar.data,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

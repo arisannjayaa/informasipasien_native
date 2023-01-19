@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/extensions/sweetalert2/sweetalert2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app.css') ?>">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/main/app-dark.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('public/assets/extensions/filepond/filepond.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('public/assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/filepond.css') ?>">
     <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.svg') ?>" type="image/x-icon">
     <link rel="shortcut icon" href="<?= base_url('public/assets/images/logo/favicon.png') ?>" type="image/png">
     <link rel="stylesheet" href="<?= base_url('public/assets/css/pages/fontawesome.css') ?>">
@@ -28,7 +25,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <a class="fs-4" href="index.html" style="line-height: 0;">Informasi Pasien</a>
+                            <a class="fs-4" href="<?= base_url() ?>" style="line-height: 0;">Informasi Pasien</a>
                         </div>
                         <div class="sidebar-toggler  x">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -113,7 +110,7 @@
                                         <h6 class="dropdown-header">Halo, <?= ucfirst($_SESSION['username']) ?></h6>
                                     </li>
                                     <li><a class="dropdown-item" href="<?= base_url('profil') ?>"><i class="icon-mid bi bi-person me-2"></i> Profil Saya</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i> Pengaturan</a></li>
+                                    <li><a class="dropdown-item" href="<?= base_url('pengaturan') ?>"><i class="icon-mid bi bi-gear me-2"></i> Pengaturan</a></li>
 
                                     <hr class="dropdown-divider">
                                     </li>

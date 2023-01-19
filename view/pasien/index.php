@@ -69,9 +69,9 @@ if (isset($_SESSION['login']) == 'true') {
                                                         Edit</span></li>
                                                 <li><span role="button" class="dropdown-item delete" data-id="<?= $data['id_pasien'] ?>" data-nama="<?= $data['nama'] ?>"><i class="bi bi-trash-fill text-danger"></i>
                                                         Delete</span></li>
-                                                <li><a href="<?php echo "./../files/" . $data['kartu_rs'] . ".pdf" ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
+                                                <li><a href="<?= base_url('config/pasien/show_kartu_rs.php?id=') . $data['kartu_rs'] ?>" target="_blank"><span role="button" class="dropdown-item kartu"><i class="bi bi-person-badge-fill text-success"></i>
                                                             Kartu Pasien</span></li>
-                                                <li><a href="<?= base_url('files/') . $data['info_pasien'] . '.pdf' ?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
+                                                <li><a href="<?= base_url('config/pasien/show_info_pasien.php?id=') . $data['info_pasien'] ?>" target="_blank"><span role="button" class="dropdown-item cetakinfo">
                                                             <i class="bi bi-file-earmark-fill text-secondary"></i>
                                                             Cetak Informasi Pasien</span></a></li>
                                             </ul>

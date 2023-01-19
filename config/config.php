@@ -1,17 +1,29 @@
 <?php
 session_start();
 date_default_timezone_set('Asia/Kuala_Lumpur');
-$con = mysqli_connect('localhost', 'root', '', 'db_informasipasien');
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$dbInformasiPasien = 'db_informasipasien';
+$dbKtp = 'db_projek';
+$con = mysqli_connect($host, $username, $password, $dbInformasiPasien);
 
-if (mysqli_connect_error()) {
-    header("location: " . base_url("500"));
-}
+// if (mysqli_connect_error()) {
+//     header("location: " . base_url("500"));
+// }
 
 function base_url($url = null)
 {
-    $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/informasipasien_native";
-    // ngrok base_url
+    // local dev
+    // $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/informasipasien_native";
+    $base_url = "http://informasipasien_native.test";
+
+    // ngrok server
     // $base_url = 'https://73ab-180-252-65-10.ap.ngrok.io/informasipasien_native';
+
+    // hosting elektro-pnb.id
+    // $base_url = 'https://informasipasien.elektro-pnb.id';
+
     if ($url != null) {
         return $base_url . "/" . $url;
     } else {

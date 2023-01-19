@@ -2,8 +2,6 @@
 </div>
 </div>
 </div>
-<script src="<?= base_url('public/assets/extensions/filepond/filepond.js') ?>"></script>
-<script src="<?= base_url('public/assets/js/pages/filepond.js') ?>"></script>
 <script src="<?= base_url('public/assets/js/bootstrap.js') ?>"></script>
 <script src="<?= base_url('public/assets/js/app.js') ?>"></script>
 <script src="<?= base_url('public/assets/extensions/jquery/jquery.min.js') ?>"></script>

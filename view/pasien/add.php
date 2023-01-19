@@ -39,7 +39,7 @@ if (isset($_SESSION['login']) == 'true') {
                             <div class="col">
                                 <h5>Data Diri Pasien</h5>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="nama" placeholder="Nama lengkap" name="nama">
+                                    <input type="text" class="form-control" id="nama" placeholder="Nama lengkap" name="nama" required>
                                     <label for="nama">Nama lengkap</label>
                                 </div>
                                 <div class="d-flex mb-3 gap-3">
@@ -48,13 +48,13 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="tempat_lahir">Tempat lahir</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal lahir" name="tanggal_lahir">
+                                        <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal lahir" name="tanggal_lahir" required>
                                         <label for="tanggal_lahir">Tanggal lahir</label>
                                     </div>
                                 </div>
                                 <div class="d-flex mb-3 gap-3">
                                     <div class="col-9 form-floating">
-                                        <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin">
+                                        <select class="form-select" id="jenis_kelamin" aria-label="Jenis kelamin" name="jenis_kelamin" required>
                                             <option value="" selected>Pilih jenis kelamin</option>
                                             <option value="Laki-Laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
@@ -62,7 +62,7 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="jenis_kelamin">Jenis kelamin</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <select class="form-select" id="gol_darah" aria-label="Golongan darah" name="gol_darah">
+                                        <select class="form-select" id="gol_darah" aria-label="Golongan darah" name="gol_darah" required>
                                             <option value="" selected>Pilih golongan darah</option>
                                             <option value="-">-</option>
                                             <option value="A">A</option>
@@ -90,17 +90,17 @@ if (isset($_SESSION['login']) == 'true') {
                                         <label for="kabupaten">Kabupaten/Kota</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat"></textarea>
+                                        <textarea type="text" class="form-control" id="alamat" placeholder="Alamat tinggal" name="alamat" required></textarea>
                                         <label for="alamat">Alamat tinggal</label>
                                     </div>
                                 </div>
                                 <div class="d-flex mb-3 gap-3">
                                     <div class="col form-floating">
-                                        <input type="text" class="form-control" id="no_telp" placeholder="Tempat lahir" name="no_telp">
+                                        <input type="text" class="form-control" id="no_telp" placeholder="Tempat lahir" name="no_telp" required>
                                         <label for="no_telp">No Telepon/Hp</label>
                                     </div>
                                     <div class="col form-floating">
-                                        <input type="text" class="form-control" id="email" placeholder="Tempat lahir" name="email">
+                                        <input type="email" class="form-control" id="email" placeholder="Tempat lahir" name="email">
                                         <label for="email">Email</label>
                                     </div>
                                 </div>

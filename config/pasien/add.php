@@ -46,7 +46,7 @@ $kartu_rs           = $title_pdf1;
 $info_pasien        = $title_pdf2;
 
 $querycek = mysqli_query($con, "SELECT nik FROM pasiens WHERE nik='$nik'");
-$queryktp = mysqli_query($con, "SELECT nik FROM db_projek.tb_ktp  WHERE nik='$nik'");
+$queryktp = mysqli_query($con, "SELECT nik FROM $dbKtp.tb_ktp  WHERE nik='$nik'");
 $ktps = mysqli_fetch_assoc($queryktp);
 $pasien = mysqli_fetch_assoc($querycek);
 
@@ -61,11 +61,7 @@ if ($pasien['nik'] == $nik) {
 
 require_once('create_kartu_rs_dan_info_pasien.php');
 
-// if ($query) {
-//     $_SESSION['addsuccess'] = 'Berhasil menambahkan data pasien';
-//     header("location: " . base_url("pasien/list"));
-// }
 if ($query) {
     $_SESSION['addsuccess'] = 'Berhasil menambahkan data pasien';
-    header("location: ../../pasien/list");
+    header("location: " . base_url("pasien/list"));
 }

@@ -1,7 +1,7 @@
--- DROP database db_informasipasien_native;
--- CREATE DATABASE db_informasipasien_native;
+DROP database db_informasipasien;
+CREATE DATABASE db_informasipasien;
 
--- USE db_informasipasien_native;
+USE db_informasipasien;
 
 CREATE TABLE provinsi (
   id_provinsi int PRIMARY KEY NOT NULL,
