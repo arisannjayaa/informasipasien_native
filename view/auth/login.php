@@ -56,8 +56,9 @@ if (!isset($_SESSION['login'])) {
                 </div>
                 <div class="col-lg-7 d-none d-lg-block">
                     <div id="auth-right">
-                        <div class="d-flex justify-content-center align-items-center vh-100">
-                            <img class="img-fluid p-5 bg-white rounded-4 h-50 shadow-sm" width="500" src="<?= base_url('public/assets/images/bg-login.jpg') ?>" alt="">
+                        <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+                            <img width="450" src="<?= base_url('public/assets/images/6634375.svg') ?>" alt="">
+                            <span class="text-white text-center" style="margin: 0 150px;">Data Kesehatan Informasi Pasien adalah sistem yang berguna untuk mengelola registrasi dari pasien.</span>
                         </div>
                     </div>
                 </div>
